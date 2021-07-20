@@ -1,0 +1,82 @@
+﻿@model IframeTransferData
+@{
+    Layout = "_Layout";
+}
+
+@section head
+{
+    <style type="text/css">
+        .reqired {
+            color: red;
+            font-weight: bold;
+            padding-right: 5px;
+            vertical-align: middle;
+        }
+
+        .layui-form-label {
+            width: 81px;
+            padding-right: 12px;
+        }
+
+        .layui-form-selected dl {
+            height: 140px;
+        }
+    </style>
+}
+
+<div class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="reqired">*</span>对账单文件</label>
+        <div class="middle">
+            <button type="button" class="layui-btn" id="upload">
+                <i class="layui-icon">&#xe67c;</i>选择对账单文件
+            </button>
+            <span style="" id="lbFileName"></span>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="reqired">*</span>对账单年份</label>
+        <div class="layui-input-block">
+            <select id="year" lay-verify="required">
+                <option value="">请选择年份</option>
+                @for (var i = 2019; i <= 2050; i++)
+                {
+                    <option value="@i">@(i + "年")</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="reqired">*</span>对账单月份</label>
+        <div class="layui-input-block">
+            <select id="month" lay-verify="required">
+                <option value="">请选择月份</option>
+                @for (var i = 1; i <= 12; i++)
+                {
+                    <option value="@i">@(i.ToString().PadLeft(2, '0') + "月")</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+            <input type="text" id="remark" placeholder="请输入导入备注信息" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="form" id="submit">立即导入</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/pay/manualReconcile/import.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pay/manualReconcile/import.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}

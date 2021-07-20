@@ -1,0 +1,872 @@
+[
+  {
+    "outputFileName": "wwwroot/css/icon.min.css",
+    "inputFiles": [
+      "wwwroot/css/icon.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/public.min.css",
+    "inputFiles": [
+      "wwwroot/css/public.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/login.min.js",
+    "inputFiles": [
+      "wwwroot/js/login.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/main.min.js",
+    "inputFiles": [
+      "wwwroot/js/main.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/bodyTab.min.js",
+    "inputFiles": [
+      "wwwroot/js/bodyTab.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin/manager/add.min.js",
+    "inputFiles": [
+      "wwwroot/js/admin/manager/add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin/manager/edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/admin/manager/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin/manager/getRoleList.min.js",
+    "inputFiles": [
+      "wwwroot/js/admin/manager/getRoleList.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin/manager/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/admin/manager/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin/permission/add.min.js",
+    "inputFiles": [
+      "wwwroot/js/admin/permission/add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin/permission/edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/admin/permission/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin/permission/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/admin/permission/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin/role/add.min.js",
+    "inputFiles": [
+      "wwwroot/js/admin/role/add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin/role/edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/admin/role/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin/role/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/admin/role/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin/role/queryPermissionList.min.js",
+    "inputFiles": [
+      "wwwroot/js/admin/role/queryPermissionList.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/freight/home/channel.min.js",
+    "inputFiles": [
+      "wwwroot/js/freight/home/channel.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/freight/home/inquiry.min.js",
+    "inputFiles": [
+      "wwwroot/js/freight/home/inquiry.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/freight/inquiryManage/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/freight/inquiryManage/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/index.min.css",
+    "inputFiles": [
+      "wwwroot/css/index.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/freight/home/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/freight/home/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/jquery.fileDownload.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery.fileDownload.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin/home/loginLog.min.js",
+    "inputFiles": [
+      "wwwroot/js/admin/home/loginLog.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin/home/operationLog.min.js",
+    "inputFiles": [
+      "wwwroot/js/admin/home/operationLog.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/freight/home/quote.min.js",
+    "inputFiles": [
+      "wwwroot/js/freight/home/quote.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/selfInfo.min.js",
+    "inputFiles": [
+      "wwwroot/js/selfInfo.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/changePwd.min.js",
+    "inputFiles": [
+      "wwwroot/js/changePwd.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/freight/inquiryManage/statusLog.min.js",
+    "inputFiles": [
+      "wwwroot/js/freight/inquiryManage/statusLog.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/freight/company/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/freight/company/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/freight/company/edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/freight/company/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/freight/company/viewCheck.min.js",
+    "inputFiles": [
+      "wwwroot/js/freight/company/viewCheck.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/freight/report/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/freight/report/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/freight/report/process.min.js",
+    "inputFiles": [
+      "wwwroot/js/freight/report/process.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/business/user/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/business/user/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/business/user/feedback.min.js",
+    "inputFiles": [
+      "wwwroot/js/business/user/feedback.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/lib/codemirror.min.js",
+    "inputFiles": [
+      "wwwroot/codemirror/lib/codemirror.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/lib/codemirror.min.css",
+    "inputFiles": [
+      "wwwroot/codemirror/lib/codemirror.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/htmlembedded.min.js",
+    "inputFiles": [
+      "wwwroot/codemirror/htmlembedded.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/theme/dracula.min.css",
+    "inputFiles": [
+      "wwwroot/codemirror/theme/dracula.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/addon/fold/foldgutter.min.css",
+    "inputFiles": [
+      "wwwroot/codemirror/addon/fold/foldgutter.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/addon/fold/foldgutter.min.js",
+    "inputFiles": [
+      "wwwroot/codemirror/addon/fold/foldgutter.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/addon/fold/foldcode.min.js",
+    "inputFiles": [
+      "wwwroot/codemirror/addon/fold/foldcode.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/addon/fold/brace-fold.min.js",
+    "inputFiles": [
+      "wwwroot/codemirror/addon/fold/brace-fold.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/addon/fold/comment-fold.min.js",
+    "inputFiles": [
+      "wwwroot/codemirror/addon/fold/comment-fold.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/mode/javascript.min.js",
+    "inputFiles": [
+      "wwwroot/codemirror/mode/javascript.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/theme/3024-night.min.css",
+    "inputFiles": [
+      "wwwroot/codemirror/theme/3024-night.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/mode/htmlmixed.min.js",
+    "inputFiles": [
+      "wwwroot/codemirror/mode/htmlmixed.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/mode/htmlmixed/htmlmixed.min.js",
+    "inputFiles": [
+      "wwwroot/codemirror/mode/htmlmixed/htmlmixed.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/mode/htmlembedded/htmlembedded.min.js",
+    "inputFiles": [
+      "wwwroot/codemirror/mode/htmlembedded/htmlembedded.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/mode/javascript/javascript.min.js",
+    "inputFiles": [
+      "wwwroot/codemirror/mode/javascript/javascript.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/addon/mode/multiplex.min.js",
+    "inputFiles": [
+      "wwwroot/codemirror/addon/mode/multiplex.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/mode/xml/xml.min.js",
+    "inputFiles": [
+      "wwwroot/codemirror/mode/xml/xml.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/codemirror/mode/css/css.min.js",
+    "inputFiles": [
+      "wwwroot/codemirror/mode/css/css.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/message/templateType/edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/message/templateType/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/message/templateType/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/message/templateType/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/message/templateType/add.min.js",
+    "inputFiles": [
+      "wwwroot/js/message/templateType/add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/message/template/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/message/template/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/message/sendTask/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/message/sendTask/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/message/sendTask/add.min.js",
+    "inputFiles": [
+      "wwwroot/js/message/sendTask/add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/message/templateType/import.min.js",
+    "inputFiles": [
+      "wwwroot/js/message/templateType/import.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/message/sendTask/sendTemplateTest.min.js",
+    "inputFiles": [
+      "wwwroot/js/message/sendTask/sendTemplateTest.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/message/sendTask/edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/message/sendTask/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/productCategory/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/productCategory/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/productCategory/add.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/productCategory/add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/product/add.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/product/add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/realTime/platformShop/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/realTime/platformShop/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/realTime/userPlatformShop/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/realTime/userPlatformShop/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/realTime/payingUsers/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/realTime/payingUsers/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/realTime/searchNum/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/realTime/searchNum/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/activity/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/activity/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/activity/add.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/activity/add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/activity/addrule.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/activity/addrule.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/activity/addCoupon.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/activity/addCoupon.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/activity/edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/activity/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/activityCoupon/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/activityCoupon/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/activity/view.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/activity/view.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/productCategory/edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/productCategory/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/product/edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/product/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/product/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/product/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/productSku/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/productSku/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/productSku/add.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/productSku/add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/productSku/edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/productSku/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/purchaseOrder/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/purchaseOrder/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/productSku/addPrice.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/productSku/addPrice.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/payment/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/payment/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/productSku/addBusiness.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/productSku/addBusiness.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/payment/view.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/payment/view.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/purchaseOrder/view.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/purchaseOrder/view.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/module/json-viewer/jquery.json-viewer.min.css",
+    "inputFiles": [
+      "wwwroot/module/json-viewer/jquery.json-viewer.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/module/json-viewer/jquery.json-viewer.min.js",
+    "inputFiles": [
+      "wwwroot/module/json-viewer/jquery.json-viewer.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/transaction/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/transaction/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/echarts/shine.min.js",
+    "inputFiles": [
+      "wwwroot/echarts/shine.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/echarts/macarons.min.js",
+    "inputFiles": [
+      "wwwroot/echarts/macarons.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/chart/orderCountView.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/chart/orderCountView.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/chart/paymentCountView.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/chart/paymentCountView.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/chart/orderAmountView.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/chart/orderAmountView.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/chart/paymentAmountView.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/chart/paymentAmountView.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/reconcile/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/reconcile/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/business/user/detail.min.js",
+    "inputFiles": [
+      "wwwroot/js/business/user/detail.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/business/statistic/analysisView.min.js",
+    "inputFiles": [
+      "wwwroot/js/business/statistic/analysisView.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/deals/statisticsService/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/deals/statisticsService/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/ims.min.js",
+    "inputFiles": [
+      "wwwroot/js/ims.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/trackApi/userInfo/add.min.js",
+    "inputFiles": [
+      "wwwroot/js/trackApi/userInfo/add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/trackApi/userInfo/edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/trackApi/userInfo/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/trackApi/userInfo/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/trackApi/userInfo/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/trackApi/userInfo/view.min.js",
+    "inputFiles": [
+      "wwwroot/js/trackApi/userInfo/view.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/carrierTrack/statistics/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/carrierTrack/statistics/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/carrierTrack/statistics/userMarkLog.min.js",
+    "inputFiles": [
+      "wwwroot/js/carrierTrack/statistics/userMarkLog.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/carrierTrack/home/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/carrierTrack/home/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/carrierTrack/home/add.min.js",
+    "inputFiles": [
+      "wwwroot/js/carrierTrack/home/add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/carrierTrack/home/edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/carrierTrack/home/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/invoiceApply/reject.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/invoiceApply/reject.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/invoice/add.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/invoice/add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/invoice/edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/invoice/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/invoice/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/invoice/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/invoice/view.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/invoice/view.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/invoiceApply/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/invoiceApply/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/invoiceApply/pass.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/invoiceApply/pass.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/invoiceApply/view.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/invoiceApply/view.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/offlinePayment/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/offlinePayment/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/offlinePayment/pass.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/offlinePayment/pass.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/offlinePayment/reject.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/offlinePayment/reject.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/offlinePayment/view.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/offlinePayment/view.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/trackApi/analyze/registerAnalyzeIndex.min.js",
+    "inputFiles": [
+      "wwwroot/js/trackApi/analyze/registerAnalyzeIndex.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/module/autoComplete/autocomplete.min.css",
+    "inputFiles": [
+      "wwwroot/module/autoComplete/autocomplete.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/manualReconcile/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/manualReconcile/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pay/manualReconcile/import.min.js",
+    "inputFiles": [
+      "wwwroot/js/pay/manualReconcile/import.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/cache.min.js",
+    "inputFiles": [
+      "wwwroot/js/cache.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/module/formSelects-v4/formSelects-v4.min.css",
+    "inputFiles": [
+      "wwwroot/module/formSelects-v4/formSelects-v4.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/trackApi/userInfo/viewConfig.min.js",
+    "inputFiles": [
+      "wwwroot/js/trackApi/userInfo/viewConfig.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/business/user/reply.min.js",
+    "inputFiles": [
+      "wwwroot/js/business/user/reply.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/business/userUnregister/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/business/userUnregister/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/trackApi/userShop/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/trackApi/userShop/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/trackApi/userShop/trackUploadRecord.min.js",
+    "inputFiles": [
+      "wwwroot/js/trackApi/userShop/trackUploadRecord.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/trackApi/batchTask/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/trackApi/batchTask/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/seller/userShop/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/seller/userShop/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/seller/userShop/trackUploadRecord.min.js",
+    "inputFiles": [
+      "wwwroot/js/seller/userShop/trackUploadRecord.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/business/eSDashboard/set.min.js",
+    "inputFiles": [
+      "wwwroot/js/business/eSDashboard/set.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/business/eSDashboard/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/business/eSDashboard/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/devOps/trackData/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/devOps/trackData/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/devOps/trackInfoKeyFilterDelete/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/devOps/trackInfoKeyFilterDelete/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/devOps/trackInfoNumbersDelete/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/devOps/trackInfoNumbersDelete/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/business/email/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/business/email/index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/business/email/detail.min.js",
+    "inputFiles": [
+      "wwwroot/js/business/email/detail.js"
+    ]
+  }
+]

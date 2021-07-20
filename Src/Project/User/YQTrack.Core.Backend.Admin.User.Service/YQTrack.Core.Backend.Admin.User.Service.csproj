@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>D:\Work\YQTrack.Core.Backend.IMS\Backup\Src\Project\User\YQTrack.Core.Backend.Admin.User.Service\</UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Imp\InternalDto\**" />
+    <EmbeddedResource Remove="Imp\InternalDto\**" />
+    <None Remove="Imp\InternalDto\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Admin\YQTrack.Core.Backend.Admin.Core\YQTrack.Core.Backend.Admin.Core.csproj" />
+    <ProjectReference Include="..\..\..\Admin\YQTrack.Core.Backend.Admin.Data\YQTrack.Core.Backend.Admin.Data.csproj" />
+    <ProjectReference Include="..\..\Pay\YQTrack.Core.Backend.Admin.Pay.Data\YQTrack.Core.Backend.Admin.Pay.Data.csproj" />
+    <ProjectReference Include="..\..\Seller\YQTrack.Core.Backend.Admin.Seller.Data\YQTrack.Core.Backend.Admin.Seller.Data.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.User.Data\YQTrack.Core.Backend.Admin.User.Data.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.User.DTO\YQTrack.Core.Backend.Admin.User.DTO.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="YQTrack.Backend.Enums">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Enums.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.Models">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.Payment.Model">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Payment.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.Sharding">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Sharding.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.SRVI.DeleteUser">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.SRVI.DeleteUser.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

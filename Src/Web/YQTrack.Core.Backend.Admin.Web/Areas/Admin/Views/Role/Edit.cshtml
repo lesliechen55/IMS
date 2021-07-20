@@ -1,0 +1,46 @@
+﻿@model IframeTransferData<RolePageDataResponse>
+@{
+    Layout = "_Layout";
+}
+<div class="layui-form">
+    <input type="hidden" name="id" value="@Model.Data.Id" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">角色名</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" required lay-verify="required" placeholder="请输入角色名" autocomplete="off" class="layui-input" value="@Model.Data.Name">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">开关</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="isActive" lay-filter="isActive" lay-skin="switch" lay-text="ON|OFF"
+                   value="@(Model.Data.IsActive ? "true" : "")" @(Model.Data.IsActive ? "checked" : "")>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+            <textarea name="remark" required lay-verify="required" placeholder="请输入备注内容" class="layui-textarea">@Model.Data.Remark</textarea>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">关联的用户</label>
+        <div class="layui-input-block">
+            <p style="padding-top: 10px;">@Model.Data.RoleAccounts</p>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="form">立即提交</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/admin/role/edit.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/admin/role/edit.min.js" asp-append-version="true"></script>
+    </environment>
+}

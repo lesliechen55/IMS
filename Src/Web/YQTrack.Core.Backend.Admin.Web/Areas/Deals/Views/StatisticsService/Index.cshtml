@@ -1,0 +1,89 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="startTime" placeholder="请选择开始时间" name="startTime">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="endTime" placeholder="请选择结束时间" name="endTime">
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+
+<div class="layui-collapse">
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">点击数趋势图</h2>
+        <div class="layui-colla-content layui-show">
+            <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+            <hr class="layui-bg-cyan">
+            <div id="statisticsAllChartFromClickRate" style="width: 100%;height:600px;"></div>
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">转化数趋势图</h2>
+        <div class="layui-colla-content layui-show">
+            <hr class="layui-bg-cyan">
+            <div id="statisticsAllChartFromTransactionRate" style="width: 100%;height:600px;"></div>
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">佣金趋势图</h2>
+        <div class="layui-colla-content layui-show">
+            <hr class="layui-bg-cyan">
+            <div id="statisticsAllChartFromPaymentRate" style="width: 100%;height:600px;"></div>
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">转化率趋势图</h2>
+        <div class="layui-colla-content layui-show">
+            <hr class="layui-bg-cyan">
+            <div id="statisticsAllChartFromConversionRate" style="width: 100%;height:600px;"></div>
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">ECPC趋势图</h2>
+        <div class="layui-colla-content layui-show">
+            <hr class="layui-bg-cyan">
+            <div id="statisticsAllChartFromECPCRate" style="width: 100%;height:600px;"></div>
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">总体趋势图</h2>
+        <div class="layui-colla-content layui-show">
+            <hr class="layui-bg-cyan">
+            <div id="statisticsAllChartFromAllRate" style="width: 100%;height:600px;"></div>
+        </div>
+    </div>
+</div>
+
+<table id="tableStatisticsAll" class="layui-table" lay-filter="tableStatisticsAll"></table>
+
+<div class="layui-row">
+    <div class="layui-col-md6">
+        <table id="tableStartMer" class="layui-table" lay-filter="tableStartMer"></table>
+    </div>
+    <div class="layui-col-md6">
+        <table id="tableEndMer" class="layui-table" lay-filter="tableEndMer"></table>
+    </div>
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script type="text/javascript" src="~/echarts/echarts.js" asp-append-version="true"></script>
+        <script src="~/echarts/shine.js" asp-append-version="true"></script>
+        <script src="~/js/deals/statisticsService/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script type="text/javascript" src="~/echarts/echarts.min.js" asp-append-version="true"></script>
+        <script src="~/echarts/shine.min.js" asp-append-version="true"></script>
+        <script src="~/js/deals/statisticsService/index.min.js" asp-append-version="true"></script>
+    </environment>
+}
+
+

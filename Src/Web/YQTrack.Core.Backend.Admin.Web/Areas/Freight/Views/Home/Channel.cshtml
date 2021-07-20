@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "渠道管理";
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote quoteBox">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="id" name="id" placeholder="渠道Id" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="name" name="name" placeholder="渠道名称(模糊搜索)" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="publishStartTime" name="publishStartTime" placeholder="发布开始时间">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="publishEndTime" name="publishEndTime" placeholder="发布结束时间">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="expireStartTime" name="expireStartTime" placeholder="失效开始日期">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="expireEndTime" name="expireEndTime" placeholder="失效结束日期">
+            </div>
+            <div class="layui-input-inline">
+                <select id="status" name="status">
+                    <option value="">请选择状态</option>
+                    <option value="1">发布中</option>
+                    <option value="2">已停止</option>
+                    <option value="3">已过期</option>
+                </select>
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+            <a class="layui-btn layui-btn-normal" id="export" href="@Url.Action("ExportChannelExcel","Channel")">导出</a>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+<script type="text/html" id="toolbar">
+</script>
+@section Scripts{
+    <script src="~/lib/jquery.min.js" asp-append-version="true"></script>
+    <environment include="Development">
+        <script src="~/js/freight/home/channel.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery.fileDownload.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/freight/home/channel.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery.fileDownload.min.js" asp-append-version="true"></script>
+    </environment>
+}
+

@@ -1,0 +1,166 @@
+﻿@model IframeTransferData<Dictionary<int, string>>
+@{
+    Layout = "_Layout";
+}
+@section head{
+    <style type="text/css">
+        .layui-elem-field {
+            padding: 10px
+        }
+
+        .layui-form-label {
+            width: 85px;
+            padding-left: 10px;
+        }
+
+        .layui-form-item {
+            margin-bottom: 10px
+        }
+
+        .image {
+            border: 1px solid #ddd;
+            padding: 5px;
+            background-color: white;
+            box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            opacity: 1;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        #imgDiv:hover .image {
+            opacity: 0.3;
+        }
+
+        #imgDiv:hover .middle {
+            opacity: 1;
+        }
+    </style>
+}
+<div class="layui-form">
+    <fieldset class="layui-elem-field">
+        <legend>
+            开票资料
+        </legend>
+        <div class="layui-form-item">
+            <label class="layui-form-label">注册邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" id="userEmail" name="userEmail" required lay-verify="required" placeholder="请输入注册邮箱" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">发票类型</label>
+            <div class="layui-input-block">
+                <select name="invoiceType" id="invoiceType" lay-verify="required">
+                    @foreach (var item in Model.Data)
+                    {
+                        <option value="@item.Key">@item.Value</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">注册公司名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="companyName" required lay-verify="required" placeholder="请输入注册公司名称" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">纳税人识别号</label>
+            <div class="layui-input-block">
+                <input type="text" name="taxNo" required lay-verify="required" placeholder="请输入纳税人识别号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">一般纳税人证明</label>
+            <div class="layui-input-block" id="imgDiv">
+                <img id="img" class="image" width="500" height="200" lay-verify="formFile" asp-append-version="true" />
+                <div class="middle">
+                    <button type="button" class="layui-btn" id="upload">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
+                </div>
+                <input id="taxPayerCertificateUrl" name="taxPayerCertificateUrl" type="hidden" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">开户银行</label>
+            <div class="layui-input-block">
+                <input type="text" name="bank" lay-verify="notEmpty" placeholder="请输入开户银行" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">开户账号</label>
+            <div class="layui-input-block">
+                <input type="text" name="bankAccount" lay-verify="notEmpty" placeholder="请输入开户账号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">注册地址</label>
+            <div class="layui-input-block">
+                <input type="text" name="address" lay-verify="notEmpty" placeholder="请输入注册地址" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">注册电话</label>
+            <div class="layui-input-block">
+                <input type="text" name="telephone" lay-verify="notEmpty" placeholder="请输入注册电话" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="layui-elem-field">
+        <legend>
+            收件信息
+        </legend>
+        <div class="layui-form-item">
+            <label class="layui-form-label">快递地址</label>
+            <div class="layui-input-block">
+                <input type="text" name="expressAddress" required lay-verify="required" placeholder="请输入快递地址" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">发票邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" name="invoiceEmail" required lay-verify="required" placeholder="请输入发票邮箱" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系人</label>
+            <div class="layui-input-block">
+                <input type="text" name="contact" required lay-verify="required" placeholder="请输入联系人" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机号码</label>
+            <div class="layui-input-block">
+                <input type="text" name="phone" required lay-verify="required" placeholder="请输入手机号码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button id="submit" class="layui-btn" lay-submit lay-filter="form">立即提交</button>
+                <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/pay/invoice/add.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pay/invoice/add.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}
+

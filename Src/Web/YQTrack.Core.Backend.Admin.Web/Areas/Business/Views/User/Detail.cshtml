@@ -1,0 +1,228 @@
+﻿@model UserDetailResponse
+@{
+    Layout = "_Layout";
+}
+@section head
+{
+    <style type="text/css">
+        .layui-elem-field legend {
+            padding: 10px;
+        }
+
+        .layui-form-label {
+            width: 90px;
+        }
+
+        .layui-input-block {
+            margin-left: 120px;
+        }
+    </style>
+}
+<div class="layui-form">
+    <fieldset class="layui-elem-field">
+        <legend>
+            基本信息
+        </legend>
+        <div class="layui-form-item">
+            <label class="layui-form-label"> 用户ID</label>
+            <div class="layui-input-block">
+                <input type="text" id="userId" disabled="disabled" autocomplete="off" class="layui-input" value="@Model.UserId">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"> 用户Gid</label>
+            <div class="layui-input-block">
+                <input type="text" id="userId" disabled="disabled" autocomplete="off" class="layui-input" value="@Model.Gid">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"> 注册邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" autocomplete="off" class="layui-input" value="@Model.Email">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"> 用户昵称</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" autocomplete="off" class="layui-input" value="@Model.NickName">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"> 数据库配置</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" autocomplete="off" class="layui-input" value="@string.Format("服务器节点：{0} 数据库编号：{1} 表编号：{2}",Model.NodeId,Model.DbNo,Model.TableNo)">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"> 用户角色</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" autocomplete="off" class="layui-input" value="@Model.UserRole">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"> 来源</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" autocomplete="off" class="layui-input" value="@Model.Source">
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label"> 注册时间</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" autocomplete="off" class="layui-input" value="@Model.CreateTime">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label"> 最后访问时间</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" autocomplete="off" class="layui-input" value="@Model.LastSignIn">
+            </div>
+        </div>
+    </fieldset>
+    @if (Model.UserRole == "Buyer")
+    {
+        <fieldset class="layui-elem-field">
+            <legend>
+                会员信息
+            </legend>
+            <table id="info" class="layui-table" lay-filter="info">
+                <thead>
+                    <tr>
+                        <th lay-data="{field:'memberLevel'}"> 会员等级</th>
+                        <th lay-data="{field:'startTime'}"> 生效时间</th>
+                        <th lay-data="{field:'expiresTime'}"> 过期时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListMemberInfo)
+                    {
+                        <tr>
+                            <td>@item.MemberLevel </td>
+                            <td>@item.StartTime </td>
+                            <td>@item.ExpiresTime </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </fieldset>
+        <fieldset class="layui-elem-field">
+            <legend>
+                设备信息
+            </legend>
+            <table id="device" class="layui-table" lay-filter="device">
+                <thead>
+                    <tr>
+                        <th lay-data="{field:'language', width:100}"> 设备语言</th>
+                        <th lay-data="{field:'deviceModel', width:180}"> 型号</th>
+                        <th lay-data="{field:'ostype', width:100}"> 系统类型</th>
+                        <th lay-data="{field:'osversion', width:100}"> 系统版本</th>
+                        <th lay-data="{field:'appVersion', width:100}"> App版本</th>
+                        <th lay-data="{field:'isPush', width:100}"> 开启推送</th>
+                        <th lay-data="{field:'isValid', width:100}"> 是否有效</th>
+                        <th lay-data="{field:'lastVisitTime', width:160}"> 最近访问</th>
+                        <th lay-data="{field:'deviceId', width:350}"> 设备ID</th>
+                        <th lay-data="{field:'pushToken', width:350}"> 推送令牌</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListUserDevice)
+                    {
+                    <tr>
+                        <td>@item.Language </td>
+                        <td>@item.DeviceModel </td>
+                        <td>@item.Ostype </td>
+                        <td>@item.Osversion </td>
+                        <td>@item.AppVersion </td>
+                        <td> <input type="checkbox" name="switch" lay-skin="switch" lay-text="开启|关闭" @Html.Raw(item.IsPush ? "checked" : "") disabled> </td>
+                        <td> <input type="checkbox" name="switch" lay-skin="switch" lay-text="有效|无效" @Html.Raw(item.IsValid ? "checked" : "") disabled> </td>
+                        <td>@item.LastVisitTime </td>
+                        <td>@item.DeviceId </td>
+                        <td>@item.PushToken </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </fieldset>
+    }
+    else if (Model.UserRole == "Seller")
+    {
+        <fieldset class="layui-elem-field">
+            <legend>
+                卖家信息
+            </legend>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">跟踪额度</label>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" class="layui-input" value="@Model.SellerInfo.TrackServiceCount.ToString("N0")" disabled>
+                    </div>
+                    <div class="layui-form-mid"> &nbsp;剩余跟踪额度</div>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" class="layui-input" value="@Model.SellerInfo.TrackRemainCount.ToString("N0")" disabled>
+                    </div>
+                    <div class="layui-form-mid"> &nbsp;邮件额度</div>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" class="layui-input" value="@Model.SellerInfo.EmailServiceCount.ToString("N0")" disabled>
+                    </div>
+                    <div class="layui-form-mid"> &nbsp;剩余邮件额度</div>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" class="layui-input" value="@Model.SellerInfo.EmailRemainCount.ToString("N0")" disabled>
+                    </div>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="hidden" id="userRoute" value="@Html.Encode(Model.SellerInfo.UserRoute)">
+                        <button class="layui-btn" lay-submit id="shop" lay-filter="shop">查看店铺</button>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-input-inline" style="width: 120px;">
+                            <button class="layui-btn" lay-submit id="task" lay-filter="task">查看大批量任务</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    }
+    <fieldset class="layui-elem-field">
+        <legend>
+            交易信息
+        </legend>
+        <table id="payment" class="layui-table" lay-filter="payment">
+            <thead>
+                <tr>
+                    <th lay-data="{field:'orderName'}"> 订单名称</th>
+                    <th lay-data="{field:'providerId'}"> 支付商</th>
+                    <th lay-data="{field:'currencyType'}"> 货币类型</th>
+                    <th lay-data="{field:'paymentAmount'}"> 支付金额</th>
+                    <th lay-data="{field:'paymentStatus'}"> 支付状态</th>
+                    <th lay-data="{field:'createAt'}"> 创建时间</th>
+                    <th lay-data="{field:'updateAt'}"> 修改时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ListPayment)
+                {
+                    <tr>
+                        <td>@item.OrderName </td>
+                        <td>@item.ProviderId </td>
+                        <td>@item.CurrencyType </td>
+                        <td>@item.PaymentAmount </td>
+                        <td>@item.PaymentStatus </td>
+                        <td>@item.CreateAt </td>
+                        <td>@item.UpdateAt </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div style="text-align:center">
+            <a href="javascript:;" id="more" class="layui-table-link">查看更多交易信息</a>
+        </div>
+    </fieldset>
+</div>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/business/user/detail.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/business/user/detail.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}

@@ -1,0 +1,168 @@
+﻿@model IframeTransferData<UserConfigResponse>
+@{
+    ViewData["Title"] = "ViewConfig";
+    Layout = "_Layout";
+}
+@section head
+{
+    <style type="text/css">
+        .layui-elem-field legend {
+            padding: 10px;
+        }
+
+        .layui-checkbox-disbaled {
+            background-color: #fff !important;
+        }
+
+            .layui-checkbox-disbaled i {
+                background-color: inherit !important;
+            }
+
+        .layui-form-checked.layui-checkbox-disbaled i {
+            background-color: #8eca9e !important;
+        }
+    </style>
+}
+<div class="layui-form">
+    <fieldset class="layui-elem-field">
+        <legend>
+            用户安全
+        </legend>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名称</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@Model.Data.UserName" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">注册邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@Model.Data.Email" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">调度频率</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@Model.Data.ScheduleFrequency" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">访问密钥</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@Model.Data.AppSecretKey" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">IP白名单</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@string.Join(';', Model.Data.IPWhiteList)" disabled>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="layui-elem-field">
+        <legend>
+            通知配置
+        </legend>
+        <div class="layui-form-item">
+            <label class="layui-form-label">Webhook</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@Model.Data.WebHook" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">推送条件</label>
+            <div class="layui-input-block">
+                <div class="layui-inline">
+                    <div class="layui-input-inline" style="width:170px">
+                        <label class="layui-form-label-col">包裹状态发生以下变化：</label>
+                    </div>
+                    <div class="layui-input-inline" style="width:100px">
+                        <input type="checkbox" name="" value="0" title="查询不到" lay-skin="primary" @Html.Raw(Model.Data.ApiNotify.ApiPushConfig.PushStates.Contains(0) ? "checked" : "") disabled>
+                    </div>
+                    <div class="layui-input-inline" style="width:100px">
+                        <input type="checkbox" name="" value="10" title="运输途中" lay-skin="primary" @Html.Raw(Model.Data.ApiNotify.ApiPushConfig.PushStates.Contains(10) ? "checked" : "") disabled>
+                    </div>
+                    <div class="layui-input-inline" style="width:100px">
+                        <input type="checkbox" name="" value="20" title="运输过久" lay-skin="primary" @Html.Raw(Model.Data.ApiNotify.ApiPushConfig.PushStates.Contains(20) ? "checked" : "") disabled>
+                    </div>
+                    <div class="layui-input-inline" style="width:100px">
+                        <input type="checkbox" name="" value="30" title="到达待取" lay-skin="primary" @Html.Raw(Model.Data.ApiNotify.ApiPushConfig.PushStates.Contains(30) ? "checked" : "") disabled>
+                    </div>
+                    <div class="layui-input-inline" style="width:100px">
+                        <input type="checkbox" name="" value="35" title="投递失败" lay-skin="primary" @Html.Raw(Model.Data.ApiNotify.ApiPushConfig.PushStates.Contains(35) ? "checked" : "") disabled>
+                    </div>
+                    <div class="layui-input-inline" style="width:100px">
+                        <input type="checkbox" name="" value="40" title="成功签收" lay-skin="primary" @Html.Raw(Model.Data.ApiNotify.ApiPushConfig.PushStates.Contains(40) ? "checked" : "") disabled>
+                    </div>
+                    <div class="layui-input-inline" style="width:100px">
+                        <input type="checkbox" name="" value="50" title="可能异常" lay-skin="primary" @Html.Raw(Model.Data.ApiNotify.ApiPushConfig.PushStates.Contains(50) ? "checked" : "") disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">错误预警</label>
+            <div class="layui-input-block">
+                <div class="layui-inline">
+                    <div class="layui-input-inline" style="width:158px">
+                        <label class="layui-form-label-col">每日连续推送错误次数达</label>
+                    </div>
+                    <div class="layui-input-inline" style="width:100px">
+                        <input type="text" class="layui-input" value="@(Model.Data.ApiNotify.ApiPushConfig.ErrorCountWarningValue==0?"":Model.Data.ApiNotify.ApiPushConfig.ErrorCountWarningValue.ToString("N0"))" disabled>
+                    </div>
+                    <div class="layui-input-inline" style="width:300px">
+                        <label class="layui-form-label-col">时，触发邮件通知</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">额度预警</label>
+            <div class="layui-input-block">
+                <div class="layui-inline">
+                    <div class="layui-input-inline" style="width:100px">
+                        <label class="layui-form-label-col">当剩余额度小于</label>
+                    </div>
+                    <div class="layui-input-inline" style="width:100px">
+                        <input type="text" class="layui-input" value="@(Model.Data.ApiNotify.QuotaConfig.QuotaWarningValue==0?"":Model.Data.ApiNotify.QuotaConfig.QuotaWarningValue.ToString("N0"))" disabled>
+                    </div>
+                    <div class="layui-input-inline" style="width:300px">
+                        <label class="layui-form-label-col">时，触发邮件通知</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="layui-elem-field">
+        <legend>
+            联系信息
+        </legend>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系人</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@Model.Data.ContactName" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@Model.Data.ContactEmail" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系电话</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@Model.Data.ContactPhone" disabled>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/trackApi/userInfo/viewConfig.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/trackApi/userInfo/viewConfig.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}

@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="Dapper" Version="2.0.30" />
+    <ProjectReference Include="..\..\..\Admin\YQTrack.Core.Backend.Admin.Core\YQTrack.Core.Backend.Admin.Core.csproj" />
+    <ProjectReference Include="..\..\..\Core\YQTrack.Core.Backend.Enums\YQTrack.Core.Backend.Enums.csproj" />
+    <ProjectReference Include="..\..\..\Core\YQTrack.Core.Backend.Enums\YQTrack.Core.Backend.Enums.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.Log.Data\YQTrack.Core.Backend.Admin.Log.Data.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.Log.DTO\YQTrack.Core.Backend.Admin.Log.DTO.csproj" />
+  </ItemGroup>
+
+</Project>

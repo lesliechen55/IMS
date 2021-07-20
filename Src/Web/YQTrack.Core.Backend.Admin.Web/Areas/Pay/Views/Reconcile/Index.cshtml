@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "_Layout";
+}
+@section head
+{
+    <environment include="Development">
+        <link rel="stylesheet" href="~/module/formSelects-v4/formSelects-v4.css" asp-append-version="true" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/module/formSelects-v4/formSelects-v4.min.css" asp-append-version="true" />
+    </environment>
+}
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <input type="hidden" id="page" name="page" value="1" />
+        <input type="hidden" id="limit" name="limit" value="10" />
+        <div class="layui-input-inline" style="width:18%">
+            <select id="paymentProvider" name="paymentProvider" xm-select="paymentProvider" xm-select-height="36px" multiple>
+                <option value="">请选择支付方式</option>
+                <option value="11">支付宝</option>
+                <option value="21">微信支付</option>
+                <option value="31">Paypal</option>
+                <option value="61">Glocash信用卡</option>
+                <option value="62">Stripe信用卡</option>
+                @*@foreach (var item in Model.PaymentProvider)
+                    {
+                        <option value="@item.Key">@item.Value</option>
+                    }*@
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" id="startTime" name="startTime" placeholder="请选择开始时间">
+        </div>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" id="endTime" name="endTime" placeholder="请选择结束时间">
+        </div>
+        <a class="layui-btn" id="search">搜索</a>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-normal" lay-event="view">
+            <i class="layui-icon">&#xe7ae;</i> 查看
+        </button>
+    </div>
+</script>
+
+<script type="text/html" id="failedCountTpl">
+    {{#  if(d.failedCount > 0){ }}
+    <div style="background-color: pink">{{d.failedCount}}</div>
+    {{#  } else { }}
+    {{d.failedCount}}
+    {{#  } }}
+</script>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/module/formSelects-v4/formSelects-v4.js" asp-append-version="true"></script>
+        <script src="~/js/pay/reconcile/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/module/formSelects-v4/formSelects-v4.min.js" asp-append-version="true"></script>
+        <script src="~/js/pay/reconcile/index.min.js" asp-append-version="true"></script>
+    </environment>
+}

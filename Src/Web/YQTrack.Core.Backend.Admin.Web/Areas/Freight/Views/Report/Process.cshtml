@@ -1,0 +1,44 @@
+﻿@model IframeTransferData
+@{
+    Layout = "_Layout";
+}
+<div class="layui-form" lay-filter="form">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">处理结果</label>
+        <div class="layui-input-block">
+            <input type="radio" name="status" value="0" title="待处理">
+            <input type="radio" name="status" value="1" title="有效举报">
+            <input type="radio" name="status" value="2" title="无效举报">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">处理备注</label>
+        <div class="layui-input-block">
+            <textarea name="remark" required lay-verify="required" placeholder="请填写处理备注,用于自身查阅记录" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">处理说明</label>
+        <div class="layui-input-block">
+            <textarea id="detail" name="detail" placeholder="请填写处理说明,用于通过邮件方式发送给运输商" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="form">立即提交</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        window.data = '@(Html.Raw(Model.InvokeElementId))';
+    </script>
+    <environment include="Development">
+        <script src="~/js/freight/report/process.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/freight/report/process.min.js" asp-append-version="true"></script>
+    </environment>
+}

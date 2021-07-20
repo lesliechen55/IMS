@@ -1,0 +1,47 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+@section head{
+    <environment include="Development">
+        <link href="~/module/json-viewer/jquery.json-viewer.css" rel="stylesheet" media="all" asp-append-version="true" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/module/json-viewer/jquery.json-viewer.min.css" rel="stylesheet" media="all" asp-append-version="true" />
+    </environment>
+
+    <style type="text/css">
+        pre#json-renderer {
+            border: 1px solid #aaa;
+            font-family: sans-serif;
+        }
+    </style>
+}
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <div class="layui-input-inline" style="width:300px">
+                <input type="text" id="number" name="number" class="layui-input" placeholder="请输入运单号" />
+            </div>
+        </div>
+        <a class="layui-btn" id="search">查询</a>
+    </form>
+</blockquote>
+<div class="layui-card">
+    <div class="layui-card-header">查询结果如下:</div>
+    <div class="layui-card-body">
+        <pre id="json-renderer"></pre>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/lib/jquery.min.js" asp-append-version="true"></script>
+    <environment include="Development">
+        <script src="~/module/json-viewer/jquery.json-viewer.js" asp-append-version="true"></script>
+        <script src="~/js/devOps/trackData/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/module/json-viewer/jquery.json-viewer.min.js" asp-append-version="true"></script>
+        <script src="~/js/devOps/trackData/index.min.js" asp-append-version="true"></script>
+    </environment>
+}

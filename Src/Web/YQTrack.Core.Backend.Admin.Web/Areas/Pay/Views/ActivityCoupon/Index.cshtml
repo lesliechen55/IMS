@@ -1,0 +1,65 @@
+﻿@using YQTrack.Backend.Enums
+@using YQTrack.Backend.Payment.Model.Enums
+@{
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            <div class="layui-input-inline">
+                @*<input type="text" class="layui-input" id="activityId" name="activityId" placeholder="请输入活动ID" />*@
+                <input type="text" class="layui-input" id="activityName" name="activityName" placeholder="请输入活动名称" />
+            </div>
+
+
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="purchaseOrderId" name="purchaseOrderId" placeholder="请输入订单编号" />
+            </div>
+
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="userId" name="userId" placeholder="请输入用户ID" />
+            </div>
+
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="userEmail" name="userEmail" placeholder="请输入用户邮箱" />
+            </div>
+
+            <div class="layui-input-inline">
+                <select id="status" name="status">
+                    <option value="-1">使用状态</option>
+                    <option value="0">None</option>
+                    <option value="1">未使用</option>
+                    <option value="2">已使用</option>
+                </select>
+            </div>
+
+            @*<div class="layui-input-inline">
+            <input type="text" class="layui-input" id="startTime" lay-verify="date" name="startTime" onclick="layui.laydate({elem: this})" placeholder="请选择开始时间">
+        </div>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" id="endTime" lay-verify="date" name="endTime" onclick="layui.laydate({elem: this})" placeholder="请选择结束时间">
+        </div>*@
+
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+
+@*<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn" lay-event="add"> <i class="layui-icon">&#xe608;</i>发放优惠券</button>
+    </div>
+</script>*@
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/pay/activityCoupon/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pay/activityCoupon/index.min.js" asp-append-version="true"></script>
+    </environment>
+}
+

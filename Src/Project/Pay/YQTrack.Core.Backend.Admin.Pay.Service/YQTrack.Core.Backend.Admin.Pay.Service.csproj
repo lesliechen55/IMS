@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Admin\YQTrack.Core.Backend.Admin.Core\YQTrack.Core.Backend.Admin.Core.csproj" />
+    <ProjectReference Include="..\..\..\Core\YQTrack.Core.Backend.Admin.CommonService\YQTrack.Core.Backend.Admin.CommonService.csproj" />
+    <ProjectReference Include="..\..\User\YQTrack.Core.Backend.Admin.User.Data\YQTrack.Core.Backend.Admin.User.Data.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.Pay.Data\YQTrack.Core.Backend.Admin.Pay.Data.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.Pay.DTO\YQTrack.Core.Backend.Admin.Pay.DTO.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="Dapper" Version="2.0.30" />
+    <ProjectReference Include="..\..\..\Admin\YQTrack.Core.Backend.Admin.Data\YQTrack.Core.Backend.Admin.Data.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.Pay.DTO\YQTrack.Core.Backend.Admin.Pay.DTO.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="YQTrack.Backend.Enums">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Enums.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.Payment.Model">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Payment.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.SRVI.Payment">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.SRVI.Payment.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

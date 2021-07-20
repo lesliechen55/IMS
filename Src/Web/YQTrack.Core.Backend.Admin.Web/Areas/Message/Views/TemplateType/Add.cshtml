@@ -1,0 +1,130 @@
+﻿@model IframeTransferData<TemplateTypeSelectResponse>
+@{
+    Layout = "_Layout";
+}
+@section head{
+    <environment include="Development">
+        <link rel="stylesheet" href="~/codemirror/lib/codemirror.css" media="all" asp-append-version="true" />
+        <!--引入css文件，用以支持主题-->
+        <link rel="stylesheet" href="~/codemirror/theme/3024-night.css" media="all" asp-append-version="true" />
+        <link rel="stylesheet" href="~/codemirror/theme/dracula.css" media="all" asp-append-version="true" />
+        <!--支持代码折叠-->
+        <link rel="stylesheet" href="~/codemirror/addon/fold/foldgutter.css" media="all" asp-append-version="true" />
+    </environment>
+
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/codemirror/lib/codemirror.min.css" media="all" asp-append-version="true" />
+        <!--引入css文件，用以支持主题-->
+        <link rel="stylesheet" href="~/codemirror/theme/3024-night.min.css" media="all" asp-append-version="true" />
+        <link rel="stylesheet" href="~/codemirror/theme/dracula.min.css" media="all" asp-append-version="true" />
+        <!--支持代码折叠-->
+        <link rel="stylesheet" href="~/codemirror/addon/fold/foldgutter.min.css" media="all" asp-append-version="true" />
+    </environment>
+    <style type="text/css">
+        .CodeMirror {
+            font-family: monospace;
+            line-height: 14px;
+            font: 14px monospace,Consolas,Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif;
+            height: 300px;
+            color: black;
+            direction: ltr;
+        }
+    </style>
+}
+<div class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">项目</label>
+        <div class="layui-input-block">
+            <select name="projectId" lay-verify="required">
+                @foreach (var item in Model.Data.Projects)
+                {
+                    <option value="@item.ProjectId">@item.ProjectName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">通道</label>
+        <div class="layui-input-block">
+            <select name="channel" lay-verify="required">
+                @foreach (var item in Model.Data.Channels)
+                {
+                    <option value="@item.ChannelId">@item.ChannelName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">模板名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="templateName" required lay-verify="required" placeholder="请输入模板名称" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">模板描述</label>
+        <div class="layui-input-block">
+            <input type="text" name="templateDescribe" required lay-verify="required" placeholder="请输入模板描述" autocomplete="off" class="layui-input">
+            @*<textarea name="templateDescribe" required lay-verify="required" placeholder="请输入模板描述" class="layui-textarea"></textarea>*@
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">样例数据</label>
+        <div class="layui-input-block">
+            <!-- begin code -->
+            <textarea class="form-control" id="dataJson" name="dataJson"></textarea>
+            <!-- end code-->
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">模板标题</label>
+        <div class="layui-input-block">
+            @*<input type="text" name="templateTitle" required lay-verify="required" placeholder="请输入模板标题" autocomplete="off" class="layui-input">*@
+            <textarea class="form-control" id="templateTitle" name="templateTitle"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">模板内容</label>
+        <div class="layui-input-block">
+            <!-- begin code -->
+            <textarea class="form-control" id="templateBody" name="templateBody"></textarea>
+            <!-- end code-->
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="form">立即提交</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script type="text/javascript" src="~/codemirror/lib/codemirror.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/codemirror/mode/htmlmixed/htmlmixed.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/codemirror/mode/xml/xml.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/codemirror/mode/css/css.js" asp-append-version="true"></script>
+        <!--javascript代码高亮-->
+        <script type="text/javascript" src="~/codemirror/mode/javascript/javascript.js" asp-append-version="true"></script>
+        <!--支持代码折叠-->
+        <script type="text/javascript" src="~/codemirror/addon/fold/foldcode.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/codemirror/addon/fold/foldgutter.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/codemirror/addon/fold/brace-fold.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/codemirror/addon/fold/comment-fold.js" asp-append-version="true"></script>
+
+        <script src="~/js/message/templateType/add.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script type="text/javascript" src="~/codemirror/lib/codemirror.min.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/codemirror/mode/htmlmixed/htmlmixed.min.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/codemirror/mode/xml/xml.min.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/codemirror/mode/css/css.min.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/codemirror/mode/javascript/javascript.min.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/codemirror/addon/fold/foldcode.min.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/codemirror/addon/fold/foldgutter.min.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/codemirror/addon/fold/brace-fold.min.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/codemirror/addon/fold/comment-fold.min.js" asp-append-version="true"></script>
+
+        <script src="~/js/message/templateType/add.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}

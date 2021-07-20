@@ -1,0 +1,63 @@
+﻿@model IframeTransferData
+@{
+    Layout = "_Layout";
+}
+<div class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">账号</label>
+        <div class="layui-input-block">
+            <input type="text" name="account" required lay-verify="required|account" placeholder="请输入账号" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">昵称</label>
+        <div class="layui-input-block">
+            <input type="text" name="nickName" required lay-verify="required" placeholder="请输入昵称" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-block">
+            <input type="password" name="password" placeholder="请输入密码" required autocomplete="off" class="layui-input" lay-verify="required|password">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">确认密码</label>
+        <div class="layui-input-block">
+            <input type="password" name="confirmPassword" placeholder="请输入确认密码" required autocomplete="off" class="layui-input" lay-verify="required|confirmPassword">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-block">
+            <input type="text" lay-verify="email" name="email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否启用</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="isLock" checked lay-filter="locked" lay-skin="switch" lay-text="ON|OFF" value="false">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+            <textarea name="remark" required lay-verify="required" placeholder="请输入备注内容" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="form">立即提交</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/admin/manager/add.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/admin/manager/add.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}

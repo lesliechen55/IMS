@@ -1,0 +1,41 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Warning",
+      "Microsoft": "Warning",
+      "Hangfire": "Information"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "FreightDbContext": "Data Source=172.16.0.94,4433;Initial Catalog=YQTrackV6_Carrier;User ID=17carrierdbvisitor;Password=17TrackneT;persist security info=true;",
+    "AdminDbContext": "Server=172.16.0.94,4433;Database=YQTrackV6_IMS;User ID=17imsdbvisitor;password=17TrackneT;persist security info=true;",
+    "UserDbContext": "Data Source=172.16.0.94,4433;Initial Catalog=YQTrackV5_User1;User ID=17userdbvisitor;password=gTMyANfvqjBe19WK;persist security info=true;",
+    "MessageDbContext": "Data Source=172.16.0.94,4433;Initial Catalog=YQTrackV6_Message;User ID=17msgdbvisitor;password=17TrackneT;persist security info=true;",
+    "PayDbContext": "Data Source=172.16.0.94,4433;Initial Catalog=YQTrackV6_Payment;User ID=17paydbvisitor;password=KUMkNQCzEdBjX2Bc;persist security info=true;",
+    "DealsDbContext": "Data Source=172.16.0.94,4433;Initial Catalog=YQTrackV6_Deal;User ID=17dealdbvisitor;password=17TrackneT;persist security info=true;",
+    "LogDbContext": "Data Source=172.16.0.94,4433;Initial Catalog=YQTrackV5_Log;User ID=17userdbvisitor;password=gTMyANfvqjBe19WK;persist security info=true;",
+    "ApiUserDbContext": "Data Source=172.16.0.94,4433;Initial Catalog=YQTrackV5_Api;User ID=17apidbvisitor;password=17TrackneT;persist security info=true;",
+    "ApiTrackDbContext": "Data Source=172.16.0.94,4433;Initial Catalog=YQTrackV5_ApiTrack1;User ID=17apidbvisitor;password=17TrackneT;persist security info=true;",
+    "CarrierTrackDbContext": "Data Source=172.16.0.94,4433;Initial Catalog=YQTrackV6_CarrierTrack1;User ID=17carrierdbvisitor;password=17TrackneT;persist security info=true;",
+    "HangfireConnection": "Server=172.16.0.94,4433;Database=YQTrackV6_IMS;User ID=17imsdbvisitor;password=17TrackneT;persist security info=true;",
+    "SellerOrderDBContext": "Data Source=172.16.0.94,4433;Initial Catalog=YQTrackV5_SellerOrder11;User ID=17sellerdbvisitor;Password=gTMyANfvqjBe19WK;persist security info=true;",
+    "SellerMessageDBContext": "Data Source=172.16.0.94,4433;Initial Catalog=YQTrackV5_SellerMessage11;User ID=17sellerdbvisitor;Password=gTMyANfvqjBe19WK;persist security info=true;",
+    "EmailDBContext": "Data Source=172.16.0.94,4433;Initial Catalog=YQTrackV6_EmailRecord;User ID=17emaildbvisitor;password=gTMyANfvqjBe19WK;persist security info=true;"
+  },
+  "Freight": {
+    "RemoteUrl": "http://172.16.0.95:9700/inquiryquoteapi/call",
+    "CompanyAdminRemoteUrl": "http://172.16.0.95:8801"
+  },
+  "Message": {
+    "RemoteUrl": "http://172.16.0.95:9100/msgapi/call"
+  },
+  "TrackApi": {
+    "InvoicePath": "http://172.16.0.96:61115"
+  },
+  "Kibana": {
+    "Username": "user",
+    "password": "Netnm23f7Lk3tM4F"
+  }
+}

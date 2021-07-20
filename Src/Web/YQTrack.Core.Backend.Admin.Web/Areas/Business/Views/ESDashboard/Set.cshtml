@@ -1,0 +1,99 @@
+﻿@model IframeTransferData<ESDashboardDetailResponse>
+@{
+    Layout = "_Layout";
+}
+<div class="layui-form">
+    <input type="hidden" id="id" name="permissionId" value="@Model.Data.ESDashboard.PermissionId" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">链接</label>
+        <div class="layui-input-block">
+            <input type="text" id="dashboardSrc" name="dashboardSrc" required lay-verify="required" placeholder="请输入Dashboard链接" autocomplete="off" class="layui-input" value="@Model.Data.ESDashboard.DashboardSrc">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">ES字段</label>
+        <div class="layui-input-block">
+            <table id="tableField" class="layui-table">
+                <thead>
+                    <tr>
+                        <th>字段名</th>
+                        <th style="width:100px;">字段类型</th>
+                        <th style="width:100px;">枚举类别</th>
+                        <th style="width:70px;">是否枚举值</th>
+                        <th style="width:70px;">是否必填</th>
+                        <th style="width:300px;">默认值</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+            <input type="text" name="username" placeholder="请输入用户名（选填）" class="layui-input" autocomplete="off" value="@Model.Data.ESDashboard.Username">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-block">
+            <input type="password" name="password" placeholder="请输入密码（选填）" class="layui-input" autocomplete="off" value="@Model.Data.ESDashboard.Password">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">日期范围</label>
+        <div class="layui-input-block">
+            <select id="type" name="maxDateRange" lay-verify="required" lay-filter="maxDateRange">
+                <option value="">请选择最大日期范围</option>
+                @foreach (var item in Model.Data.TimeRanges)
+                {
+                    if (Model.Data.ESDashboard.MaxDateRange == item.Sort)
+                    {
+                        <option value="@item.Sort" selected>@item.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Sort">@item.Name</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <input type="hidden" id="hiFields" value="@Model.Data.ESDashboard.FieldsConfig" />
+            <button class="layui-btn" lay-submit lay-filter="form">立即提交</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var eleType = `<select class="type" lay-verify="required" lay-filter="type">
+                            <option value="">请选择字段类型</option>
+                            @foreach (var item in Model.Data.DicESFieldType)
+                            {
+                                <option value="@item.Key">@item.Value</option>
+                            }
+                        </select>`;
+        var categories = `<select class="category" lay-filter="category">
+                            <option value="">请选择枚举类别</option>
+                            @foreach (var item in Model.Data.Categories)
+                            {
+                                <option value="@item">@item</option>
+                            }
+                        </select>`;
+
+    </script>
+    <environment include="Development">
+        <script src="~/js/business/eSDashboard/set.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/business/eSDashboard/set.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}
+

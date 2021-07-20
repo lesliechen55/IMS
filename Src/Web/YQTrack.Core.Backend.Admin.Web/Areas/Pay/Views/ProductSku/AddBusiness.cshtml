@@ -1,0 +1,67 @@
+﻿@using YQTrack.Backend.Enums
+@using YQTrack.Backend.Payment.Model.Enums
+@using YQTrack.Core.Backend.Admin.Core
+@using YQTrack.Core.Backend.Enums.Pay
+@model IframeTransferData
+@{
+    Layout = "_Layout";
+}
+
+<div class="layui-form">
+    <input type="hidden" name="productSkuId" value="@Model.Id" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">业务类型</label>
+        <div class="layui-input-block">
+            <select name="businessCtrlType" lay-verify="required">
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<BusinessCtrlType>(true).Where(x => x.Key > 0))
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">消费类型</label>
+        <div class="layui-input-block">
+            <select name="consumeType" lay-verify="required">
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<ConsumeType>(true).Where(x => x.Key > 0))
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否续费</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="renew" lay-filter="renew" lay-skin="switch" lay-text="ON|OFF" value="false">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">有效期(月)</label>
+        <div class="layui-input-block">
+            <input type="number" min="0" step="1" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="validity" required lay-verify="required" placeholder="请输入有效期(月)" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">业务数量</label>
+        <div class="layui-input-block">
+            <input type="number" min="0" step="100" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="quantity" required lay-verify="required" placeholder="请输入业务数量" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="form">立即提交</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/pay/productSku/addBusiness.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pay/productSku/addBusiness.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}

@@ -1,0 +1,71 @@
+﻿@model IframeTransferData<ProductSelectDataResponse>
+@{
+    ViewBag.Title = "商品列表";
+    Layout = "_Layout";
+}
+
+@section head
+{
+    <environment include="Development">
+        <link rel="stylesheet" href="~/module/formSelects-v4/formSelects-v4.css" asp-append-version="true" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/module/formSelects-v4/formSelects-v4.min.css" asp-append-version="true" />
+    </environment>
+}
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <input type="hidden" id="page" name="page" value="1" />
+        <input type="hidden" id="limit" name="limit" value="10" />
+        <div class="layui-input-inline">
+            <select id="productCategory" name="productCategory">
+                <option value="">请选择商品类别</option>
+                @foreach (var item in Model.Data.ListCategory)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+        <div class="layui-input-inline" style="width:18%">
+            <select id="serviceType" name="serviceType" xm-select="serviceType" xm-select-height="36px" multiple>
+                <option value="">请选择服务类型</option>
+                @foreach (var item in Model.Data.ListServiceType)
+                {
+                    <option value="@item.ServiceId">@item.ServiceName</option>
+                }
+            </select>
+        </div>
+        <div class="layui-input-inline" style="width:18%">
+            <select id="role" name="role" xm-select="role" xm-select-height="36px" multiple>
+                <option value="">请选择适用角色</option>
+                @foreach (var item in Model.Data.ListRoleType)
+                {
+                    <option value="@item.Key">@item.Value</option>
+                }
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <input type="text" id="keyword" name="keyword" class="layui-input" placeholder="请输入名称/编码/描述" />
+        </div>
+        <a class="layui-btn" id="search">搜索</a>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn" lay-event="add"><i class="layui-icon">&#xe608;</i> 添加</button>
+        <button class="layui-btn layui-btn-danger" lay-event="update"><i class="layui-icon">&#xe642;</i> 编辑 </button>
+    </div>
+</script>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/module/formSelects-v4/formSelects-v4.js" asp-append-version="true"></script>
+        <script src="~/js/pay/product/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/module/formSelects-v4/formSelects-v4.min.js" asp-append-version="true"></script>
+        <script src="~/js/pay/product/index.min.js" asp-append-version="true"></script>
+    </environment>
+}

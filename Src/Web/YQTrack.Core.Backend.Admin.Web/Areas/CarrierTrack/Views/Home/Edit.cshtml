@@ -1,0 +1,65 @@
+﻿@model IframeTransferData<IndexPageDataResponse>
+
+@{
+    Layout = "_Layout";
+}
+
+@section head{
+    <style type="text/css">
+        .layui-form-label {
+            width: 85px;
+            padding-left: 10px;
+        }
+    </style>
+}
+
+<div class="layui-form">
+    <input type="hidden" name="id" value="@Model.Data.ControlId" />
+    <input type="hidden" name="userId" value="@Model.Data.UserId" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">当日导入限制</label>
+        <div class="layui-input-block">
+            <input type="number" name="importTodayLimit" step="100" value="@Model.Data.ImportTodayLimit" min="5000" required lay-verify="number" placeholder="请输入当日导入限制" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">单次导出限制</label>
+        <div class="layui-input-block">
+            <input type="number" name="exportTimeLimit" step="100" value="@Model.Data.ExportTimeLimit" min="5000" required lay-verify="number" placeholder="请输入单次导出限制" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否启用</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="enable" lay-filter="enable" lay-skin="switch" lay-text="ON|OFF" value="@(Model.Data.Enable?"true":"false")" @(Model.Data.Enable ? "checked" : "")>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">剩余可用额度</label>
+        <div class="layui-input-block">
+            <p style="padding-top: 10px;">@Model.Data.AvailableTrackNum</p>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">总购买量(不含赠送)</label>
+        <div class="layui-input-block">
+            <p style="padding-top: 10px;">@Model.Data.BuyTotalCount</p>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="form">立即提交</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/carrierTrack/home/edit.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/carrierTrack/home/edit.min.js" asp-append-version="true"></script>
+    </environment>
+}
+

@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <div class="layui-input-inline">
+                <input type="text" id="email" name="email" class="layui-input" placeholder="请输入用户邮箱" />
+            </div>
+            <div class="layui-input-inline">
+                <select id="userStatus" name="userStatus">
+                    <option value="">请选择状态</option>
+                    <option value="true">启用</option>
+                    <option value="false">禁用</option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <input type="number" id="offlineDay" name="offlineDay" placeholder="请输入离线天数" autocomplete="off" class="layui-input" value="">
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+
+<table id="table" class="layui-table" lay-filter="table"></table>
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn" lay-event="add"><i class="layui-icon">&#xe608;</i> 添加用户资料</button>
+        <button class="layui-btn layui-btn-normal" lay-event="update">
+            <i class="layui-icon">&#xe642;</i> 编辑
+        </button>
+    </div>
+</script>
+<script type="text/html" id="enable">
+    <input type="checkbox" disabled lay-skin="switch" lay-text="开启|关闭" {{ d.enable ? 'checked' : '' }}>
+</script>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/carrierTrack/home/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/carrierTrack/home/index.min.js" asp-append-version="true"></script>
+    </environment>
+}

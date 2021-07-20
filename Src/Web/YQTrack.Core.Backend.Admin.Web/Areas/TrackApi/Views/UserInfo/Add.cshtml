@@ -1,0 +1,161 @@
+﻿@using YQTrack.Core.Backend.Admin.Core
+@using YQTrack.Core.Backend.Enums.TrackApi
+@model IframeTransferData
+@{
+    Layout = "_Layout";
+}
+@section head
+{
+    <style type="text/css">
+        .reqired {
+            color: red;
+            font-weight: bold;
+            padding-right: 5px;
+            vertical-align: middle;
+        }
+
+        .layui-form-label {
+            width: 81px;
+            padding-right: 12px;
+        }
+    </style>
+}
+<div class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="reqired">*</span>用户编号</label>
+        <div class="layui-input-block">
+            <input type="text" id="userNo" name="userNo" required lay-verify="required|number" placeholder="请输入用户编号" autocomplete="off" class="layui-input" value="@Model.Id">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="reqired">*</span>注册邮箱</label>
+        <div class="layui-input-block">
+            <input type="text" name="email" required lay-verify="required|email" placeholder="请输入注册邮箱" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="reqired">*</span>用户名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="userName" required lay-verify="required" placeholder="请输入用户名称" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    @*<div class="layui-form-item">
+            <label class="layui-form-label">每天最大请求量</label>
+            <div class="layui-input-block">
+                <input type="text" name="maxTrackReq" required lay-verify="required|number" placeholder="请输入每天最大请求量" autocomplete="off" class="layui-input">
+            </div>
+        </div>*@
+    @*<div class="layui-form-item">
+        <label class="layui-form-label">使用频次</label>
+        <div class="layui-input-block">
+            <input type="text" name="trackFrequency" placeholder="请输入使用频次" autocomplete="off" class="layui-input">
+        </div>
+    </div>*@
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="reqired">*</span>调度频次</label>
+        <div class="layui-input-block">
+            <select name="scheduleFrequency" lay-verify="required">
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<ScheduleFrequency>())
+                {
+                    @*添加用户的时候默认为:高*@
+                    if ((ScheduleFrequency)key == ScheduleFrequency.High)
+                    {
+                        <option selected="selected" value="@key">@value</option>
+                    }
+                    else
+                    {
+                        <option value="@key">@value</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="reqired">*</span>每100额度赠送</label>
+        <div class="layui-input-block">
+            <input type="number" name="giftQuota" value="0" step="1" min="0" max="100" required lay-verify="number" placeholder="请输入下单赠送配额,范围:[0,100]" autocomplete="off" class="layui-input" onkeyup="this.value= this.value.match(/\d+/) ? this.value.match(/\d+/)[0] : ''">
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">是否中文</label>
+        <div class="layui-input-inline">
+            <input type="checkbox" name="isChinese" lay-skin="switch" lay-text="是|否" checked value="true">
+        </div>
+        <div class="layui-form-mid layui-word-aux">用户默认注册语言，邮件通知、对账单语言</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="reqired">*</span>结算货币</label>
+        <div class="layui-input-block">
+            <select name="currency" lay-verify="required">
+                <option value="1">人民币</option>
+                <option value="2">美元</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">公司名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="companyName" placeholder="请输入公司名称" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">增值税号</label>
+        <div class="layui-input-block">
+            <input type="text" name="vATNo" placeholder="请输入增值税号" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">国家</label>
+        <div class="layui-input-block">
+            <input type="text" name="country" placeholder="请输入国家" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">地址</label>
+        <div class="layui-input-block">
+            <input type="text" name="address" placeholder="请输入地址" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="reqired">*</span>联系人名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="contactName" placeholder="请输入联系人名称" lay-verify="required" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="reqired">*</span>联系人邮箱</label>
+        <div class="layui-input-block">
+            <input type="text" name="contactEmail" lay-verify="required|email" placeholder="请输入联系人邮箱" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="reqired">*</span>联系人电话</label>
+        <div class="layui-input-block">
+            <input type="text" name="contactPhone" placeholder="请输入联系人电话" lay-verify="required" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">其他信息</label>
+        <div class="layui-input-block">
+            <textarea name="remark" placeholder="请输入其他信息" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="form">立即提交</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/trackApi/userInfo/add.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/trackApi/userInfo/add.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}

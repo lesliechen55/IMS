@@ -1,0 +1,63 @@
+﻿@model TemplateTypeSelectResponse
+@{
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            <div class="layui-input-inline">
+                <select id="projectId" name="projectId">
+                    <option value="">请选择项目</option>
+                    @foreach (var item in Model.Projects)
+                    {
+                        <option value="@item.ProjectId">@item.ProjectName</option>
+                    }
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select id="channelId" name="channelId">
+                    <option value="">请选择发送通道</option>
+                    @foreach (var item in Model.Channels)
+                    {
+                        <option value="@item.ChannelId">@item.ChannelName</option>
+                    }
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="templateName" name="templateName" placeholder="请输入模板名称" />
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn" lay-event="add"><i class="layui-icon">&#xe608;</i> 添加</button>
+        <button class="layui-btn layui-btn-danger" lay-event="update"><i class="layui-icon">&#xe642;</i> 编辑 </button>
+        <button class="layui-btn layui-btn-normal" lay-event="preview">
+            <i class="layui-icon">&#xe7ae;</i> 预览
+        </button>
+        <button class="layui-btn layui-btn-normal" lay-event="viewTemplate">
+            <i class="layui-icon">&#xe614;</i> 查看语言模板
+        </button>
+
+        @*<a class="layui-btn layui-btn-normal" id="export" href="@Url.Action("Export","TemplateType")"><i class="layui-icon">&#xe601;</i> 导出语言模板</a>*@
+        <button class="layui-btn layui-btn-green" lay-event="export" href="@Url.Action("Export","TemplateType")"><i class="layui-icon">&#xe601;</i> 导出翻译模板 </button>
+        <button class="layui-btn layui-btn-green" lay-event="import" id="import"><i class="layui-icon">&#xe681;</i> 导入语言模板 </button>
+        <button class="layui-btn layui-btn-warm" lay-event="updateTemplate"><i class="layui-icon">&#xe642;</i> 更新语言模板 </button>
+    </div>
+</script>
+@section Scripts{
+    <script src="~/lib/jquery.min.js" asp-append-version="true"></script>
+    <environment include="Development">
+        <script src="~/lib/jquery.fileDownload.js" asp-append-version="true"></script>
+        <script src="~/js/message/templateType/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/lib/jquery.fileDownload.min.js" asp-append-version="true"></script>
+        <script src="~/js/message/templateType/index.min.js" asp-append-version="true"></script>
+    </environment>
+}

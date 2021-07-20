@@ -1,0 +1,28 @@
+﻿@using YQTrack.Core.Backend.Admin.Core
+@using YQTrack.Backend.ThirdPlatform.Enums
+@{
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <label class="layui-form-label">平台类型</label>
+            <div class="layui-input-inline">
+                <select name="sltPlatformType" id="sltPlatformType">
+                    <option value="-1">请选择</option>
+                    @foreach (var (key, value) in EnumHelper.GetSelectItem<PlatformType>())
+                    {
+                        <option value="@key">@value</option>
+                    }
+                </select>
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+@section Scripts{
+    <environment exclude="Development">
+        <script src="~/js/realTime/searchNum/index.min.js" asp-append-version="true"></script>
+    </environment>
+}

@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190223020137_AddPermssionTopMenuField.cs" />
+    <Compile Remove="Migrations\20190223030239_AddPermssionTopMenuKeyField.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspectCore.Abstractions" Version="1.2.0" />
+    <PackageReference Include="MediatR" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.Core\YQTrack.Core.Backend.Admin.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="YQTrack.Log">
+      <HintPath>..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Log.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

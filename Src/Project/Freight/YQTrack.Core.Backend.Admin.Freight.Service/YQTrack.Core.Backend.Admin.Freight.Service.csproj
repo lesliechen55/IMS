@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>D:\Work\YQTrack.Core.Backend.IMS\Backup\Src\Project\Freight\YQTrack.Core.Backend.Admin.Freight.Service\</UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Admin\YQTrack.Core.Backend.Admin.Core\YQTrack.Core.Backend.Admin.Core.csproj" />
+    <ProjectReference Include="..\..\..\Admin\YQTrack.Core.Backend.Admin.Data\YQTrack.Core.Backend.Admin.Data.csproj" />
+    <ProjectReference Include="..\..\..\Core\YQTrack.Core.Backend.Enums\YQTrack.Core.Backend.Enums.csproj" />
+    <ProjectReference Include="..\..\User\YQTrack.Core.Backend.Admin.User.Data\YQTrack.Core.Backend.Admin.User.Data.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.Freight.Data\YQTrack.Core.Backend.Admin.Freight.Data.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.Freight.DTO\YQTrack.Core.Backend.Admin.Freight.DTO.csproj" />
+  </ItemGroup>
+</Project>

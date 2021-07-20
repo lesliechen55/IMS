@@ -1,0 +1,132 @@
+﻿@using YQTrack.Core.Backend.Enums.Freight
+@model IframeTransferData<CompanyViewCheckResponse>
+@{
+    Layout = "_Layout";
+}
+<div class="layui-form">
+
+    <input type="hidden" id="id" value="@Model.Id" />
+
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>公司基本信息</legend>
+        <div class="layui-field-box">
+            <div class="layui-form-item">
+                <label class="layui-form-label">公司名称</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly="readonly" class="layui-input" value="@Model.Data.CompanyName">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">公司Logo</label>
+                <div class="layui-input-block">
+                    <img height="350" src="@Url.Action("GetViewCheckImage","Company",new { imgUrl= Model.Data.Logo })" asp-append-version="true" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="margin-top: -11px;">营业执照社会信用代码</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly="readonly" class="layui-input" value="@Model.Data.Code">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">公司简介</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly="readonly" class="layui-input" value="@Model.Data.Info">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">公司详情</label>
+                <div class="layui-input-block">
+                    <textarea style="max-height: 200px; height: 200px;" class="layui-textarea" readonly="readonly">@Model.Data.Remark</textarea>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">公司电话</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly="readonly" class="layui-input" value="@Model.Data.Telphone">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">公司规模</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly="readonly" class="layui-input" value="@Model.Data.Scale">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">官网地址</label>
+                <div class="layui-input-block">
+                    <a target="_blank" href="@Model.Data.Url" class="layui-btn" style="background-color: white; color: blue; padding-left: 2px;">@Model.Data.Url</a>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">公司地址</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly="readonly" class="layui-input" value="@($"{Model.Data.Area} {Model.Data.Address}")">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">营业执照</label>
+                <div class="layui-input-block">
+                    <img height="350" src="@Url.Action("GetViewCheckImage","Company",new { imgUrl = Model.Data.Img })" asp-append-version="true" />
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>联系人信息</legend>
+        <div class="layui-field-box">
+            <div class="layui-form-item">
+                <label class="layui-form-label">姓名</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly="readonly" class="layui-input" value="@Model.Data.Contact">
+                </div>
+            </div>
+        </div>
+        <div class="layui-field-box">
+            <div class="layui-form-item">
+                <label class="layui-form-label">QQ</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly="readonly" class="layui-input" value="@Model.Data.QQ">
+                </div>
+            </div>
+        </div>
+        <div class="layui-field-box">
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮箱</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly="readonly" class="layui-input" value="@Model.Data.Email">
+                </div>
+            </div>
+        </div>
+        <div class="layui-field-box">
+            <div class="layui-form-item">
+                <label class="layui-form-label">手机</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly="readonly" class="layui-input" value="@Model.Data.Mobile">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            @{
+                if (Model.Data.CheckState == CompanyAuditState.WaitAudit)
+                {
+                    <button id="pass" class="layui-btn">通过</button>
+                    <button id="reject" class="layui-btn">驳回</button>
+                }
+            }
+        </div>
+    </div>
+
+</div>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/freight/company/viewCheck.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/freight/company/viewCheck.min.js" asp-append-version="true"></script>
+    </environment>
+}

@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "询价管理";
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote quoteBox">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            <div class="layui-input-inline">
+                <input type="text" id="id" name="id" class="layui-input" placeholder="请输入询价ID" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="title" name="title" class="layui-input" placeholder="请输入询价标题" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="inquiryNo" name="inquiryNo" class="layui-input" placeholder="请输入询价编号" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="publisher" name="publisher" class="layui-input" placeholder="请输入发布人编号(短标识)" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="publishStartTime" name="publishStartTime" placeholder="发布开始日期">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="publishEndTime" name="publishEndTime" placeholder="发布结束日期">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="expireStartTime" name="expireStartTime" placeholder="截止开始日期">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="expireEndTime" name="expireEndTime" placeholder="截止结束日期">
+            </div>
+            <div class="layui-input-inline">
+                <select id="status" name="status" lay-verify="">
+                    <option value="">请选择状态</option>
+                    <option value="0">发布中</option>
+                    <option value="1">已截止</option>
+                    <option value="2">交易成功</option>
+                    <option value="3">交易失败</option>
+                    <option value="4">管理员下架</option>
+                </select>
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+            <a class="layui-btn" id="export" href="@Url.Action("InquiryInfo","Export")">导出</a>
+        </div>
+    </form>
+</blockquote>
+
+<table id="table" class="layui-table" lay-filter="inquiryTable"></table>
+
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-danger" lay-event="reject"><i class="layui-icon">&#xe6b2;</i> 下架</button>
+    </div>
+</script>
+
+@section Scripts{
+    <script src="~/lib/jquery.min.js" asp-append-version="true"></script>
+    <environment include="Development">
+        <script src="~/js/freight/home/inquiry.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery.fileDownload.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/freight/home/inquiry.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery.fileDownload.min.js" asp-append-version="true"></script>
+    </environment>
+}

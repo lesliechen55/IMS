@@ -1,0 +1,349 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YQTrack.Core.Backend.Admin.Web</name>
+    </assembly>
+    <members>
+        <member name="T:YQTrack.Core.Backend.Admin.Web.APIController.AuthController">
+            <summary>
+            API身份认证控制器
+            </summary>
+        </member>
+        <member name="M:YQTrack.Core.Backend.Admin.Web.APIController.AuthController.GetToken(YQTrack.Core.Backend.Admin.Web.Models.Api.Request.TokenRequest)">
+            <summary>
+            获取token
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:YQTrack.Core.Backend.Admin.Web.APIController.TestController">
+            <summary>
+            测试API控制器
+            </summary>
+        </member>
+        <member name="M:YQTrack.Core.Backend.Admin.Web.APIController.TestController.GetTodoItems">
+            <summary>
+            获取10条渠道信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YQTrack.Core.Backend.Admin.Web.APIController.TestController.GetSomeLogs">
+            <summary>
+            获取5条询价单状态日志
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YQTrack.Core.Backend.Admin.Web.APIController.TestController.Export">
+            <summary>
+            导出示例Excel文件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YQTrack.Core.Backend.Admin.Web.APIController.TestController.GetUserCount">
+            <summary>
+            获取当前17用户数量
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Admin.Models.Response.RolePermissionResponse.IsSelect">
+            <summary>
+            配置前端treeGrid js插件序列化checkbox状态字段
+            </summary>
+        </member>
+        <member name="M:YQTrack.Core.Backend.Admin.Web.Areas.Business.Controllers.StatisticController.GetOrderByDayData(System.Int32,System.Int32)">
+            <summary>
+            获取日订单量统计折线图
+            </summary>
+            <param name="stateType">-1:全部</param>
+            <param name="dayType">30:默认30天内结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:YQTrack.Core.Backend.Admin.Web.Areas.Message.Controllers.TemplateTypeController.GetPageData(YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Request.TemplateTypePageDataRequest)">
+            <summary>
+            获取基础模板列表
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YQTrack.Core.Backend.Admin.Web.Areas.Message.Controllers.TemplateTypeController.Add(YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Request.TemplateTypeEditRequest)">
+            <summary>
+            添加基础模板
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YQTrack.Core.Backend.Admin.Web.Areas.Message.Controllers.TemplateTypeController.Edit(YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Request.TemplateTypeEditRequest)">
+            <summary>
+            修改基础模板
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Request.TemplateTypeEditRequest">
+            <summary>
+            基础模板编辑
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Request.TemplateTypeEditRequest.TemplateTypeId">
+            <summary>
+            基础模板ID
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Request.TemplateTypeEditRequest.ProjectId">
+            <summary>
+            项目ID
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Request.TemplateTypeEditRequest.Channel">
+            <summary>
+            发送通道
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Request.TemplateTypeEditRequest.TemplateName">
+            <summary>
+            模板名称
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Request.TemplateTypeEditRequest.TemplateDescribe">
+            <summary>
+            模板描述
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Request.TemplateTypeEditRequest.DataJson">
+            <summary>
+            样例数据
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Request.TemplateTypeEditRequest.TemplateTitle">
+            <summary>
+            模板标题
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Request.TemplateTypeEditRequest.TemplateBody">
+            <summary>
+            模板内容
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Request.TemplateTypePageDataRequest.ProjectId">
+            <summary>
+            项目ID
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Request.TemplateTypePageDataRequest.ChannelId">
+            <summary>
+            发送通道
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Request.TemplateTypePageDataRequest.TemplateName">
+            <summary>
+            模板名称
+            </summary>
+        </member>
+        <member name="T:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.ChannelResponse">
+            <summary>
+            发送通道
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.ChannelResponse.ChannelId">
+            <summary>
+            发送渠道Id
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.ChannelResponse.ChannelName">
+            <summary>
+            渠道名称
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.ProjectResponse.ProjectId">
+            <summary>
+            项目ID
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.ProjectResponse.ProjectName">
+            <summary>
+            项目名称
+            </summary>
+        </member>
+        <member name="T:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypeEditResponse">
+            <summary>
+            基础模板编辑
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypeEditResponse.TemplateTypeId">
+            <summary>
+            基础模板ID
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypeEditResponse.ProjectId">
+            <summary>
+            项目ID
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypeEditResponse.Channel">
+            <summary>
+            发送通道
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypeEditResponse.TemplateName">
+            <summary>
+            模板名称
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypeEditResponse.TemplateDescribe">
+            <summary>
+            模板描述
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypeEditResponse.DataJson">
+            <summary>
+            样例数据
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypeEditResponse.TemplateTitle">
+            <summary>
+            模板标题
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypeEditResponse.TemplateBody">
+            <summary>
+            模板内容
+            </summary>
+        </member>
+        <member name="T:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypePageDataResponse">
+            <summary>
+            基础模板列表
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypePageDataResponse.TemplateTypeId">
+            <summary>
+            模版类型Id
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypePageDataResponse.TemplateNo">
+            <summary>
+            模版编号
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypePageDataResponse.Channel">
+            <summary>
+            发送渠道
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypePageDataResponse.TemplateName">
+            <summary>
+            模版名称
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypePageDataResponse.TemplateDescribe">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypePageDataResponse.Enable">
+            <summary>
+            启用状态
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypePageDataResponse.IsRendering">
+            <summary>
+            是否需要渲染
+            0 否 1  是
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypePageDataResponse.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypePageDataResponse.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypePageDataResponse.DataJson">
+            <summary>
+            数据内容Json
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Areas.Message.Models.Response.TemplateTypePageDataResponse.TemplateCode">
+            <summary>
+            模板枚举Code
+            </summary>
+        </member>
+        <member name="F:YQTrack.Core.Backend.Admin.Web.Common.AppConfig.PasswordRegex">
+            <summary>
+            密码正则验证器
+            </summary>
+        </member>
+        <member name="F:YQTrack.Core.Backend.Admin.Web.Common.AppConfig.IssuerSigningKey">
+            <summary>
+            发行者签名密钥
+            </summary>
+        </member>
+        <member name="F:YQTrack.Core.Backend.Admin.Web.Common.AppConfig.Issuer">
+            <summary>
+            发行者
+            </summary>
+        </member>
+        <member name="F:YQTrack.Core.Backend.Admin.Web.Common.AppConfig.Audience">
+            <summary>
+            受众
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Common.ExcelColumnAttribute.HorizontalStyle">
+            <summary>
+            水平居中
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Common.ExcelColumnAttribute.Sort">
+            <summary>
+            列排序号
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Common.ExcelSheetAttribute.Name">
+            <summary>
+            工作表名称
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Common.ExcelSheetAttribute.RowHeight">
+            <summary>
+            表格行高
+            </summary>
+        </member>
+        <member name="M:YQTrack.Core.Backend.Admin.Web.Common.FileDownloadAttribute.CheckAndHandleFileResult(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
+            <summary>
+            If the current response is a FileResult (an MVC base class for files) then write a
+            cookie to inform jquery.fileDownload that a successful file download has occured
+            </summary>
+            <param name="filterContext"></param>
+        </member>
+        <member name="M:YQTrack.Core.Backend.Admin.Web.Controllers.HomeController.Index">
+            <summary>
+            渲染主页且包含当前管理员的菜单信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YQTrack.Core.Backend.Admin.Web.Controllers.HomeController.GetMenuData">
+            <summary>
+            获取菜单以get形式的json数据返回
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YQTrack.Core.Backend.Admin.Web.Controllers.HomeController.RandomNum">
+            <summary>
+            生成随机验证码数字字符串——4位数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Models.Api.Request.TokenRequest.Account">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:YQTrack.Core.Backend.Admin.Web.Models.Api.Request.TokenRequest.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+    </members>
+</doc>

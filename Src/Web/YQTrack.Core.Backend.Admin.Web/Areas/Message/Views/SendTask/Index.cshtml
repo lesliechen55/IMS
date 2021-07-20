@@ -1,0 +1,54 @@
+﻿@model TemplateTypeSelectResponse
+@{
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            <div class="layui-input-inline">
+                <select id="projectId" name="projectId">
+                    <option value="">请选择项目</option>
+                    @foreach (var item in Model.Projects)
+                    {
+                        <option value="@item.ProjectId">@item.ProjectName</option>
+                    }
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select id="channelId" name="channelId">
+                    <option value="">请选择发送通道</option>
+                    @foreach (var item in Model.Channels)
+                    {
+                        <option value="@item.ChannelId">@item.ChannelName</option>
+                    }
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="startTime" name="startTime" placeholder="请选择开始时间">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="endTime" name="endTime" placeholder="请选择结束时间">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="templateName" name="templateName" placeholder="请输入模板名称" />
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-danger" lay-event="update"><i class="layui-icon">&#xe642;</i> 编辑 </button>
+    </div>
+</script>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/message/sendTask/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/message/sendTask/index.min.js" asp-append-version="true"></script>
+    </environment>
+}

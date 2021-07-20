@@ -1,0 +1,164 @@
+﻿@using YQTrack.Core.Backend.Admin.Core
+@using YQTrack.Core.Backend.Enums.Pay
+@using YQTrack.Backend.Enums
+@using YQTrack.Backend.Payment.Model.Enums
+@{
+    Layout = "_Layout";
+}
+@section head
+{
+    <environment include="Development">
+        <link rel="stylesheet" href="~/module/formSelects-v4/formSelects-v4.css" asp-append-version="true" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/module/formSelects-v4/formSelects-v4.css" asp-append-version="true" />
+    </environment>
+}
+
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-input-inline">
+            <select id="paymentAnalysisType" name="paymentAnalysisType">
+                <option value="">请选择分析类型</option>
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<PaymentAnalysisType>())
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <select id="chartDateType" name="chartDateType">
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<ChartDateType>())
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <input type="text" id="email" name="email" class="layui-input" placeholder="请输入用户Email" />
+        </div>
+        <div class="layui-input-inline" style="width:18%">
+            <select id="paymentProviderSel" name="paymentProviderSel" xm-select="paymentProviderSel" xm-select-height="36px" multiple>
+                <option value="">请选择支付渠道</option>
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<PaymentProvider>().Where(w => w.Key != (int)PaymentProvider.Escrow && w.Key != (int)PaymentProvider.Wechatpay))
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+        <div class="layui-input-inline" style="width:18%">
+            <select id="serviceTypeSel" name="serviceTypeSel" xm-select="serviceTypeSel" xm-select-height="36px" multiple>
+                <option value="">请选择业务类型</option>
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<ServiceType>())
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <select id="currencyTypeSel" name="currencyTypeSel">
+                <option value="">请选择币种</option>
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<CurrencyType>().OrderByDescending(o => o.Key))
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <input type="text" id="exchangeRate" name="exchangeRate" class="layui-input" title="美元兑人民币汇率" placeholder="请输入美元兑人民币汇率" oninput="value=value.replace(/^\D*(\d*(?:\.\d{0,4})?).*$/g, '$1')" value="6.9244" />
+        </div><br />
+        <div class="layui-input-inline" style="width:18%">
+            <select id="platformTypeSel" name="platformTypeSel" xm-select="platformTypeSel" xm-select-height="36px" multiple>
+                <option value="">请选择平台类型</option>
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<UserPlatformType>(true))
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+        <div class="layui-input-inline" style="width:18%">
+            <select id="paymentStatusSel" name="paymentStatusSel" xm-select="paymentStatusSel" xm-select-height="36px" multiple>
+                <option value="">请选择交易状态</option>
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<PaymentStatus>(true))
+                {
+                    if (key == (int)PaymentStatus.Success)
+                    {
+                        <option value="@key" selected>@value</option>
+                    }
+                    else
+                    {
+                        <option value="@key">@value</option>
+                    }
+                }
+            </select>
+        </div>
+        <a class="layui-btn" id="search">查看图表</a>
+    </form>
+</blockquote>
+
+<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+
+<hr class="layui-bg-cyan">
+<div id="paymentChart" style="width: 100%;height:600px;"></div>
+
+<div class="layui-elem-quote layui-quote-nm history_box magb0">
+    <ul class="layui-timeline">
+        <li class="layui-timeline-item">
+            <i class="layui-icon layui-timeline-axis"></i>
+            <div class="layui-timeline-content layui-text">
+                <div class="layui-timeline-title">
+                    <h3 class="layui-inline">关于<span class="layui-red">图表金额币种</span>的问题说明　</h3>
+                    <span class="layui-badge-rim">2020-03-19</span>
+                </div>
+                <ul>
+                    <li>
+                        <blockquote class="layui-elem-quote title">由于统计金额数据可能是人民币和美元两个币种汇总起来的数据，所以引入了<span class="layui-blue">汇率输入框</span>的设计，在数据金额币种显示上面采取了特殊处理，目前币种符号显示在<span class="layui-red">Y坐标轴名称</span>上面。</blockquote>
+                    </li>
+                    <li class="layui-red">默认币种筛选为空，即统计的是人民币和美元两个币种汇总起来的金额。此时如果汇率输入框有值则是美元按照当前汇率换算成人民币并汇总金额，如果汇率输入框没有值则不进行换算（这个<span class="layui-blue">暂时未定</span>，不知这样汇总起来的数据是否有价值）。</li>
+                    <li>如果币种筛选框选中美元，此时汇率输入框有值的话就是折算成人民币的金额，否则不进行换算，直接显示美元金额。</li>
+                    <li>如果币种筛选框选中人民币，此时汇率输入框无论是否有值都显示人民币的金额。</li>
+                    <li class="layui-blue layedit-tool-help">以上情况都是针对<span class="layui-red">不是按照币种</span>统计的说明，如果选择<span class="layui-red">按照币种</span>统计，此时汇率输入框无论是否有值都对汇总金额没有影响。</li>
+                </ul>
+            </div>
+        </li>
+        <li class="layui-timeline-item">
+            <i class="layui-icon layui-timeline-axis"></i>
+            <div class="layui-timeline-content layui-text">
+                <div class="layui-timeline-title">
+                    <h3 class="layui-inline">此次迭代是对IMS统计分析的一次优化调整</h3>
+                    <span class="layui-badge-rim">2020-03-06</span>
+                </div>
+                <ul>
+                    <li>V1.0.3 此次迭代目的是更好的进行数据对比及统计，需求详见TAPD：<a href="https://www.tapd.cn/49209318/markdown_wikis/?#1149209318001006516" target="_blank" class="layui-btn layui-btn-xs layui-btn-normal">IMS V1.0.3迭代</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="layui-timeline-item">
+            <i class="layui-icon layui-timeline-axis"></i>
+            <div class="layui-timeline-content layui-text">
+                <div class="layui-timeline-title">
+                    <h3 class="layui-inline">未完待续</h3>
+                    <span class="layui-badge-rim">2020-03-19</span>
+                </div>
+                <ul>
+                    <li>目前还有一些优化方案未定，正在跟进中……</li>
+                    <li class="layui-blue">如果你有任何疑问或建议可联系joe、djlnet、Robert，欢迎提出更好的优化方案。</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+@section Scripts{
+    <environment include="Development">
+        <script type="text/javascript" src="~/echarts/echarts.js" asp-append-version="true"></script>
+        <script src="~/echarts/shine.js" asp-append-version="true"></script>
+        <script src="~/module/formSelects-v4/formSelects-v4.js" asp-append-version="true"></script>
+        <script src="~/js/pay/chart/paymentAmountView.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script type="text/javascript" src="~/echarts/echarts.min.js" asp-append-version="true"></script>
+        <script src="~/echarts/shine.min.js" asp-append-version="true"></script>
+        <script src="~/module/formSelects-v4/formSelects-v4.min.js" asp-append-version="true"></script>
+        <script src="~/js/pay/chart/paymentAmountView.min.js" asp-append-version="true"></script>
+    </environment>
+}

@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>D:\Work\YQTrack.Core.Backend.IMS\Backup\Src\Project\Freight\YQTrack.Core.Backend.Admin.Freight.DTO\</UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\YQTrack.Core.Backend.Enums\YQTrack.Core.Backend.Enums.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,59 @@
+﻿@model Dictionary<long, string>
+@{
+    ViewBag.Title = "商品SKU";
+    Layout = "_Layout";
+}
+
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            <div class="layui-input-inline" style="width: 150px;">
+                <select id="productType" name="productType">
+                    <option value="">请选择商品名称</option>
+                    @foreach (var (key, value) in Model)
+                    {
+                        <option value="@key">@value</option>
+                    }
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="name" name="name" class="layui-input" placeholder="请输入SKU名称" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="code" name="code" class="layui-input" placeholder="请输入SKU编码" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="desc" name="desc" class="layui-input" placeholder="请输入SKU描述" />
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+
+<table id="table" class="layui-table" lay-filter="table"></table>
+
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn" lay-event="add">
+            <i class="layui-icon">&#xe608;</i> 添加
+        </button>
+        <button class="layui-btn layui-btn-normal" lay-event="edit">
+            <i class="layui-icon">&#xe642;</i> 编辑
+        </button>
+    </div>
+</script>
+
+<script type="text/html" id="active">
+    <input type="checkbox" value='{{d.productSkuId}}' lay-skin="switch" lay-text="开启|关闭" lay-filter="active" {{ d.active ? 'checked' : '' }}>
+</script>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/pay/productSku/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pay/productSku/index.min.js" asp-append-version="true"></script>
+    </environment>
+}

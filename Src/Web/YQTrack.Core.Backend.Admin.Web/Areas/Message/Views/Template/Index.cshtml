@@ -1,0 +1,41 @@
+﻿@model TemplateSelectResponse
+@{
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            <input type="hidden" id="templateTypeId" name="templateTypeId"/>
+            <div class="layui-input-inline">
+                <select id="language" name="language">
+                    <option value="">请选择语言</option>
+                    @foreach (var item in Model.Languages)
+                    {
+                        <option value="@item.Key">@item.Value</option>
+                    }
+                </select>
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-danger" lay-event="delete"><i class="layui-icon">&#xe640;</i> 删除</button>
+
+        <button class="layui-btn layui-btn-normal" lay-event="preview">
+            <i class="layui-icon">&#xe7ae;</i> 预览
+        </button>
+    </div>
+</script>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/message/template/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/message/template/index.min.js" asp-append-version="true"></script>
+    </environment>
+}

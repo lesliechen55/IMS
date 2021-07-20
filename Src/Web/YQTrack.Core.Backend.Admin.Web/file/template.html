@@ -1,0 +1,421 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        html {
+            height: 100% !important;
+        }
+
+        body {
+            padding: 0 !important;
+            margin: 10px !important;
+            height: calc(100% - 20px) !important;
+            display: flex !important;
+            border: 1px solid #000 !important;
+        }
+
+        #translate,
+        #template {
+            flex: 1 !important;
+            height: 100% !important;
+            display: inline-block !important;
+            box-sizing: border-box !important;
+        }
+
+        #translate {
+            text-align: center !important;
+            border-right: 1px solid #000 !important;
+            width: 100% !important;
+            height: 100% !important;
+            overflow-x: hidden !important;
+            padding-bottom: 20px !important;
+        }
+
+        #title {
+            font-size: large !important;
+            text-align: center !important;
+            background-color: #f1f3fa !important;
+            border-bottom: 1px solid #000 !important;
+            padding: 20px 0 !important;
+        }
+
+        #work-space {
+            padding: 0 3% !important;
+        }
+
+            #work-space .item {
+                text-align: left !important;
+                position: relative !important;
+                margin-bottom: 10px !important;
+            }
+
+            #work-space .item-title {
+                font-weight: 700 !important;
+                font-size: 18px !important;
+            }
+
+            #work-space .explain {
+                font-weight: 700 !important;
+                font-size: 18px !important;
+                text-align: left !important;
+                margin-top: 20px !important;
+            }
+
+            #work-space label {
+                display: block !important;
+                margin: 10px 0 !important;
+            }
+
+            #work-space input {
+                width: 100% !important;
+                height: 20px !important;
+            }
+
+            #work-space .active {
+                border-top-color: #c3c3c3 !important;
+            }
+
+            #work-space .error {
+                border-color: red !important;
+            }
+
+            #work-space .outPut {
+                align-items: flex-start !important;
+                cursor: default !important;
+                color: buttontext !important;
+                background-color: buttonface !important;
+                box-sizing: border-box !important;
+                padding: 2px 6px 3px !important;
+                border-width: 2px !important;
+                border-style: outset !important;
+                border-image: initial !important;
+                text-rendering: auto !important;
+                letter-spacing: normal !important;
+                word-spacing: normal !important;
+                text-transform: none !important;
+                text-indent: 0px !important;
+                text-shadow: none !important;
+                display: inline-block !important;
+                text-align: start !important;
+                margin: 0em !important;
+                font: 400 13.3333px Arial !important;
+                -webkit-writing-mode: horizontal-tb !important;
+                -webkit-appearance: button !important;
+                text-decoration: none !important;
+            }
+
+        #error-toast {
+            position: fixed !important;
+            top: 0 !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            background-color: rgba(0, 0, 0, 0.12) !important;
+            display: none !important;
+        }
+
+            #error-toast .show-error {
+                display: block !important;
+            }
+
+            #error-toast .toast {
+                height: 80px !important;
+                padding-right: 40px !important;
+                border-radius: 5px !important;
+                background-color: #fdf6ec !important;
+                position: absolute !important;
+                top: 20% !important;
+                left: 50% !important;
+                transform: translate(-50%) !important;
+            }
+
+            #error-toast .toast-box {
+                line-height: 80px !important;
+                margin: 0 auto !important;
+                padding-left: 20px !important;
+                white-space: nowrap !important;
+            }
+
+            #error-toast .icon {
+                display: inline-block !important;
+                color: #fff !important;
+                background-color: #e6a23c !important;
+                border-radius: 50% !important;
+                width: 30px !important;
+                height: 30px !important;
+                line-height: 30px !important;
+                font-size: 18px !important;
+                text-align: center !important;
+            }
+
+            #error-toast .toast-txt {
+                padding-left: 20px !important;
+                display: inline-block !important;
+                color: #e6a23c !important;
+            }
+
+            #error-toast #close {
+                position: absolute !important;
+                right: 10px !important;
+                top: 10px !important;
+                color: #c0cdd9 !important;
+                font-size: 14px !important;
+                font-weight: 100 !important;
+                cursor: pointer !important;
+            }
+
+        /* 模板样式 */
+        #template .light {
+            border-bottom: 2px solid #0ff !important;
+            min-width: 2px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="translate">
+
+        <div id="work-space">
+
+        </div>
+    </div>
+
+    <div id="template">
+        <div id="title">
+            <!--template title area-->
+        </div>
+
+        <div id="content">
+            <!--template content area-->
+        </div>
+
+    </div>
+    <div id="error-toast">
+        <div class="toast">
+            <div id="close">ｘ</div>
+            <div class="toast-box">
+                <div class="icon">!</div>
+                <div class="toast-txt"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let fileObj = //template json area
+
+        //生成个数对应的翻译项目
+        let template = document.querySelector('#template');
+        let workSpace = document.querySelector("#work-space")
+        let items = []
+        items = items.concat(fileObj.titleDict, fileObj.bodyDict)
+        let fileItems = arr2Obj(items)
+        let doc = document.createDocumentFragment()
+
+        doc.innerHTML = "<div class='explain item-title'>title :</div>"
+        doc.innerHTML += renderInput(fileObj.titleDict, "T")
+        doc.innerHTML += "<div class='explain explain' >content : </div>"
+        doc.innerHTML += renderInput(fileObj.bodyDict, "C")
+        doc.innerHTML += "<a class='outPut'>Save</a>"
+        workSpace.innerHTML = doc.innerHTML
+        let inputList = workSpace.querySelectorAll('input')
+
+
+
+        let tragetArr = Array.prototype.slice.call(template.querySelectorAll("dict[id]"))
+        let tragetObj = arr2Obj(tragetArr)
+
+        let toast = document.querySelector('#error-toast');
+        let toastTxt = toast.querySelector('.toast-txt')
+
+        workSpace.addEventListener('focus', function (e) {
+
+            let target = e.target
+            //只有input才触发事件
+
+            let source = target.id
+            let key = null
+            if (source && tragetArr.length !== 0) {
+                key = e.target.dataset.key
+                //input除去错误提示
+                target.classList.remove('error')
+
+                let ele = tragetObj[key]
+                if (!ele) return
+                //触发对应template的高亮
+
+                for (let i = 0; i < tragetArr.length; i++) {
+                    tragetArr[i].classList.remove("light")
+                }
+
+                ele.classList.add("light")
+
+            }
+        }, true)
+
+        workSpace.addEventListener('blur', function (e) {
+
+            let target = e.target
+            //只有input才触发事件
+            let source = target.id
+            if (source) {
+                let val = target.value.trim()
+                let key = null
+                if (source && tragetArr.length !== 0) {
+                    key = e.target.dataset.key
+                    let ele = tragetObj[key]
+                    if (!ele) return
+                    for (let i = 0; i < tragetArr.length; i++) {
+                        if (val.length == 0) {
+                            target.value = val
+                        }
+                    }
+                    ele.classList.remove("light")
+                }
+            }
+
+        }, true)
+
+
+        //template动态改变对应的内容
+        workSpace.addEventListener('keyup', function (e) {
+
+            if (tragetArr.length === 0) {
+                showErrorToast({ toast, toastTxt }, "No original text, no translation required")
+                e.target.value = ""
+                if (e.target.id) e.target.blur()
+                return false
+            }
+
+            if (validCode(e.keyCode)) {
+                setTimeout(function () {
+                    let source = e.target.id
+                    let val = e.target.value.trim()
+                    let key = e.target.dataset.key
+                    fileItems[key].target = val
+                    let ele = tragetObj[key]
+                    if (!ele) return
+                    if (val.length == 0) {
+                        ele.innerHTML = fileItems[key].source
+                    } else {
+                        ele.innerHTML = val
+                    }
+
+                }, 200)
+            }
+        }, false)
+
+
+
+        //给关闭注册事件
+        toast.addEventListener('click', function (e) {
+            if (e.target.id) {
+                toast.classList.remove("show-error")
+            }
+        })
+
+        document.querySelector(".outPut").addEventListener("click", function () {
+            let errorList = [], inputArr = inputList;
+            //校验
+
+            if (inputArr.length === 0) {
+                return showErrorToast({ toast, toastTxt }, "No data, no need to save")
+            }
+
+            if (tragetArr.length === 0) {
+                return showErrorToast({ toast, toastTxt }, "No data, no need to save")
+            }
+
+            for (let i = 0; i < items.length; i++) {
+                let sourse = items[i].source.trim();
+                let val = items[i].target
+                val = val.trim()
+                let id = inputArr[i].id
+                if (sourse.length > 0 && val.length == 0) {
+                    errorList.push(id)
+                    inputArr[i].classList.add("error")
+                }
+            }
+            if (errorList.length > 0) {
+                showErrorToast({ toast, toastTxt }, "" + errorList.join("、") + " is null")
+                return false
+            }
+
+            //保存
+            saveFile(fileObj, this, function (that) {
+                setTimeout(function () {
+                    that.download = ""
+                    that.href = "#"
+                }, 200)
+            })
+
+        })
+
+
+
+        //有效按键  含删除 回退 插入 符号键盘   数字键盘
+        function validCode(code) {
+            if (code == 8 || code == 32 || range(45, 46) || range(48, 57) || range(65, 90) || range(96, 107) || range(109, 111) || range(186, 192) || range(219, 222)) {
+                return true
+            } else {
+                return false
+            }
+            function range(x, y) {
+                let val = code
+                return val >= x && val <= y
+            }
+        }
+        //保存文件
+        function saveFile(fileObj, that, callBack) {
+            var blob = new Blob([JSON.stringify(fileObj, null, 2)], { type: 'application/json' });
+            var fileName = fileObj.templateCode + ".json"
+
+            if (window.navigator.msSaveBlob) {
+                window.navigator.msSaveBlob(blob, fileName);
+            } else {
+                that.download = fileName
+                that.href = window.URL.createObjectURL(blob)
+            }
+            callBack(that)
+        }
+
+        //渲染input
+        function renderInput(item, type) {
+
+            let html = "";
+
+            if (item.length === 0) return "<div class='item no-item'> There's no " + (type == "T" ? "title" : "content") + " here  </div>"
+            for (let y = 0; y < item.length; y++) {
+                let typeIndex = type + (y + 1)
+                html +=
+                    "<div class='item'>"
+                    + "<label for=" + typeIndex + ">" + (typeIndex) + ". " + item[y].source + "</label>"
+                    + "<input type='text' data-key='" + item[y].id + "' id='" + typeIndex + "'>"
+                    + "</div>"
+            }
+            return html
+        }
+
+        function showErrorToast(obj, txt) {
+            obj.toastTxt.innerHTML = txt
+            obj.toast.classList.add("show-error")
+        }
+
+        function arr2Obj(tragetArr) {
+            let tragetObj = {}
+            for (const key in tragetArr) {
+                if (tragetArr.hasOwnProperty(key)) {
+                    tragetObj[tragetArr[key].id] = tragetArr[key];
+
+                }
+            }
+            return tragetObj
+        }
+    </script>
+</body>
+
+</html>

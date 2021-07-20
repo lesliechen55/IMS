@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
+    <PackageReference Include="StackExchange.Redis" Version="2.0.601" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Admin\YQTrack.Core.Backend.Admin.Core\YQTrack.Core.Backend.Admin.Core.csproj" />
+    <ProjectReference Include="..\..\..\Core\YQTrack.Core.Backend.Enums\YQTrack.Core.Backend.Enums.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\StackExchange.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.RedisCache">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.RedisCache.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.BaseModel">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.BaseModel.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.Message.Model">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Message.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Configuration">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Log">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Log.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.RabbitMQ">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.RabbitMQ.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,44 @@
+﻿@model int
+@{
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote">
+    赋予角色权限,请注意上下级的关系,提示:请赋予角色[我的首页]权限!!! <span style="color: red">设置成功30秒之后生效!!!</span>
+</blockquote>
+<input type="hidden" id="id" value="@Model" />
+<div class="layui-form">
+    <div class="layui-form-item">
+        <div class="layui-form-label">快捷操作</div>
+        <div class="layui-form-block">
+            <div class="layui-btn-container">
+                <button type="button" class="layui-btn" id="checkAll">全选</button>
+                <button type="button" class="layui-btn layui-btn-warm" id="uncheckAll">全不选</button>
+                <button type="button" class="layui-btn layui-btn-primary" id="showAll">全部展开</button>
+                <button type="button" class="layui-btn layui-btn-primary" id="closeAll">全部收缩</button>
+                <button type="button" class="layui-btn layui-btn-primary" id="getMaxDept">获取树的深度(测试)</button>
+                <button type="button" class="layui-btn layui-btn-primary" id="getCheckedNodes">获取选中节点状态(测试,注意控制台输出各项数据状态)</button>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">选择权限</label>
+        <div class="layui-input-block">
+            <div id="permissionTree"></div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" id="submit">提交</button>
+            <button class="layui-btn layui-btn-normal" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/admin/role/queryPermissionList.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/admin/role/queryPermissionList.min.js" asp-append-version="true"></script>
+    </environment>
+}

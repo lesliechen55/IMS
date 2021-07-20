@@ -1,0 +1,80 @@
+﻿@using YQTrack.Core.Backend.Admin.Web.Areas.Admin.Models.Response
+@model ManagerPageDataResponse
+@{
+    Layout = "_Layout";
+}
+@section head{
+    <style type="text/css">
+        .image {
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            padding: 5px;
+            background-color: white;
+            box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            opacity: 1;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        #imgDiv:hover .image {
+            opacity: 0.3;
+        }
+
+        #imgDiv:hover .middle {
+            opacity: 1;
+        }
+    </style>
+}
+<div class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">账号</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" readonly="readonly" value="@Model.Account">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">昵称</label>
+        <div class="layui-input-block">
+            <input type="text" name="nickName" style="max-width: 270px;" required lay-verify="required" placeholder="请输入昵称" autocomplete="off" class="layui-input" value="@Model.NickName">
+            <button id="updateNickName" type="button" style="position: absolute; top: 4px; right: 4px;" class="layui-btn layui-btn-sm">
+                <i class="layui-icon">&#xe605;</i>修改昵称
+            </button>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">头像</label>
+        <div class="layui-input-block" id="imgDiv">
+            <img id="img" class="image" width="200" height="200" src="@(Model.Avatar ?? "/images/default.jpg")" asp-append-version="true" />
+            <div class="middle">
+                <button type="button" class="layui-btn" id="upload">
+                    <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button id="submit" class="layui-btn">立即提交图片</button>
+            <button id="close" class="layui-btn layui-btn-danger">关闭</button>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/selfInfo.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/selfInfo.min.js" asp-append-version="true"></script>
+    </environment>
+}

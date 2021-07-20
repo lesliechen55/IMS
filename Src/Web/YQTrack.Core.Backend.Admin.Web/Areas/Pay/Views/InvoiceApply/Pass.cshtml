@@ -1,0 +1,58 @@
+﻿@model IframeTransferData<InvoiceApplyPassResponse>
+@{
+    Layout = "_Layout";
+}
+@section head{
+    <style type="text/css">
+        .layui-form-label {
+            width: 85px;
+            padding-left: 10px;
+        }
+
+        .layui-form-item {
+            margin-bottom: 10px
+        }
+    </style>
+}
+<div class="layui-form">
+    <input name="invoiceApplyId" type="hidden" value="@Model.Data.InvoiceApplyId" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">派送方式</label>
+        <div class="layui-input-block">
+            <select name="sendType" id="sendType" lay-verify="required" lay-filter="sendType">
+                @foreach (var (key, value) in Model.Data.SendType)
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item" id="sendInfo">
+        <label class="layui-form-label">邮箱地址</label>
+        <div class="layui-input-block">
+            <input id="invoiceEmail" type="hidden" value="@Model.Data.InvoiceEmail" />
+            <input type="text" name="sendInfo" required lay-verify="required" placeholder="请输入邮箱地址" autocomplete="off" class="layui-input" value="@Model.Data.InvoiceEmail">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">备注（选填）</label>
+        <div class="layui-input-block">
+            <textarea name="remark" placeholder="请输入备注" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button id="submit" class="layui-btn" lay-submit lay-filter="form">立即提交</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/pay/invoiceApply/pass.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pay/invoiceApply/pass.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}

@@ -1,0 +1,21 @@
+﻿@model int
+@{
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote">
+    赋予管理员角色,请注意当前角色列表为已经启用的角色
+</blockquote>
+<input id="id" type="hidden" value="@Model" />
+<table id="table" lay-filter="table"></table>
+<div class="layui-btn-container" style="margin-top: 15px;">
+    <button class="layui-btn" id="submit">立即提交</button>
+    <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+</div>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/admin/manager/getRoleList.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/admin/manager/getRoleList.min.js" asp-append-version="true"></script>
+    </environment>
+}

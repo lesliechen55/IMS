@@ -1,0 +1,10 @@
+﻿@model TemplateShowResponse
+@{
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote">
+    @Html.Raw(Model.TemplateTitle)
+</blockquote>
+<div id="content">
+    @Html.Raw(Model.TemplateBody)
+</div>

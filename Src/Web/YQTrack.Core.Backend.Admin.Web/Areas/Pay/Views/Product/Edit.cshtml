@@ -1,0 +1,104 @@
+﻿@model IframeTransferData<ProductShowResponse>
+@{
+    Layout = "_Layout";
+}
+
+<div class="layui-form">
+    <input type="hidden" name="productId" value="@Model.Data.ProductId" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">商品类型</label>
+        <div class="layui-input-block">
+            <select name="productCategoryId" lay-verify="required">
+                @foreach (var item in Model.Data.ProductSelectData.ListCategory)
+                {
+                    if (Model.Data.ProductCategoryId == item.Id)
+                    {
+                        <option value="@item.Id" selected>@item.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" required lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" value="@Model.Data.Name">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">编码</label>
+        <div class="layui-input-block">
+            <input type="text" name="code" required lay-verify="required" placeholder="请输入编码" autocomplete="off" class="layui-input" value="@Model.Data.Code">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">描述</label>
+        <div class="layui-input-block">
+            <textarea name="description" placeholder="请输入描述内容" class="layui-textarea">@Model.Data.Description</textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">服务类型</label>
+        <div class="layui-input-block">
+            <select name="serviceType" lay-verify="required">
+                @foreach (var item in Model.Data.ProductSelectData.ListServiceType)
+                {
+                    if ((int)Model.Data.ServiceType == item.ServiceId)
+                    {
+                        <option value="@item.ServiceId" selected>@item.ServiceName</option>
+                    }
+                    else
+                    {
+                        <option value="@item.ServiceId"> @item.ServiceName</option>
+                    }
+
+                }
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">适用角色</label>
+        <div class="layui-input-block">
+            <select name="role" lay-verify="required">
+                @foreach (var item in Model.Data.ProductSelectData.ListRoleType)
+                {
+                    if ((int)Model.Data.Role == item.Key)
+                    {
+                        <option value="@item.Key" selected>@item.Value</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Key"> @item.Value</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否订阅</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="isSubscription" lay-filter="isSubscription" lay-skin="switch" lay-text="ON|OFF" value="@Html.Raw(Model.Data.IsSubscription?"true":"false")" @Html.Raw(Model.Data.IsSubscription ? "checked" : "")>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="form">立即提交</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/pay/product/edit.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pay/product/edit.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}

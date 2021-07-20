@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>D:\Work\YQTrack.Core.Backend.IMS\Backup\Src\Admin\YQTrack.Core.Backend.Admin.Core\</UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AspectCore.Core" Version="1.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.10.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\YQTrack.Core.Backend.Enums\YQTrack.Core.Backend.Enums.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\YQTrack.Backend.Release\_Standard\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.Enums">
+      <HintPath>..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Enums.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.LanguageHelper">
+      <HintPath>..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.LanguageHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.RedisCache">
+      <HintPath>..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.RedisCache.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.Sharding">
+      <HintPath>..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Sharding.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Configuration">
+      <HintPath>..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.RabbitMQ">
+      <HintPath>..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.RabbitMQ.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.SentinelRedis">
+      <HintPath>..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.SentinelRedis.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Storage.QiniuOSS">
+      <HintPath>..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Storage.QiniuOSS.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Utility">
+      <HintPath>..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Utility.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

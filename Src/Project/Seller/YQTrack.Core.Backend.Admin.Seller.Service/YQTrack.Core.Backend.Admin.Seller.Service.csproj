@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\User\YQTrack.Core.Backend.Admin.User.Service\YQTrack.Core.Backend.Admin.User.Service.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.Seller.Data\YQTrack.Core.Backend.Admin.Seller.Data.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.Seller.DTO\YQTrack.Core.Backend.Admin.Seller.DTO.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="YQTrack.Backend.Models">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.Sharding">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Sharding.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

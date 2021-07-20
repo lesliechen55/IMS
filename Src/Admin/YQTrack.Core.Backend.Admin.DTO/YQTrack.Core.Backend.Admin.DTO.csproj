@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>D:\Work\YQTrack.Core.Backend.IMS\Backup\Src\Admin\YQTrack.Core.Backend.Admin.DTO\</UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\YQTrack.Core.Backend.Enums\YQTrack.Core.Backend.Enums.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.Core\YQTrack.Core.Backend.Admin.Core.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.Data\YQTrack.Core.Backend.Admin.Data.csproj" />
+  </ItemGroup>
+</Project>

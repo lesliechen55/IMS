@@ -1,0 +1,45 @@
+﻿@model TemplateSelectResponse
+@{
+    Layout = "_Layout";
+}
+<div class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">词条语言</label>
+        <div class="layui-input-block">
+            <select id="language" name="language">
+                <option value="">请选择语言</option>
+                @foreach (var item in Model.Languages)
+                {
+                    <option value="@item.Key">@item.Value</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">词条文件</label>
+        <div class="middle">
+            <button type="button" class="layui-btn" id="upload">
+                <i class="layui-icon">&#xe67c;</i>上传词条
+            </button>
+            <span style="" id="lbFileName"></span>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="form" id="submit">立即导入</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <environment include="Development">
+        <script src="~/js/message/templateType/import.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/message/templateType/import.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}
+
+

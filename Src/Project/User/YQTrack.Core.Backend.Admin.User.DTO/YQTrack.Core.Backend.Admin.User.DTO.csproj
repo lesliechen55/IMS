@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>D:\Work\YQTrack.Core.Backend.IMS\Backup\Src\Project\User\YQTrack.Core.Backend.Admin.User.DTO\</UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\YQTrack.Core.Backend.Enums\YQTrack.Core.Backend.Enums.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="YQTrack.Backend.Enums">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Enums.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.Models">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.Payment.Model">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Payment.Model.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>D:\Work\YQTrack.Core.Backend.IMS\Backup\Src\Admin\YQTrack.Core.Backend.Admin.Service\</UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Project\Message\YQTrack.Core.Backend.Admin.Message.Core\YQTrack.Core.Backend.Admin.Message.Core.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.Core\YQTrack.Core.Backend.Admin.Core.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.Data\YQTrack.Core.Backend.Admin.Data.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.DTO\YQTrack.Core.Backend.Admin.DTO.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="YQTrack.Utility">
+      <HintPath>..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Utility.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

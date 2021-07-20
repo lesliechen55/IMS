@@ -1,0 +1,66 @@
+﻿@using YQTrack.Backend.Enums
+@using YQTrack.Core.Backend.Admin.Core
+@model IframeTransferData
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="layui-form">
+    <input type="hidden" name="productSkuId" value="@Model.Id" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">货币类型</label>
+        <div class="layui-input-block">
+            <select name="currencyType" lay-verify="required">
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<CurrencyType>(true).Where(x => x.Key > 0))
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">平台类型</label>
+        <div class="layui-input-block">
+            <select name="platformType" lay-verify="required">
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<UserPlatformType>(true).Where(x => x.Key > 0))
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">销售价</label>
+        <div class="layui-input-block">
+            <input type="number" name="saleUnitPrice" required lay-verify="required" placeholder="请输入销售价" autocomplete="off" class="layui-input" onkeyup="this.value= this.value.match(/\d+(\.\d{0,2})?/) ? this.value.match(/\d+(\.\d{0,2})?/)[0] : ''">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">实付价</label>
+        <div class="layui-input-block">
+            <input type="number" name="amount" required lay-verify="required" placeholder="请输入实付价" autocomplete="off" class="layui-input" onkeyup="this.value= this.value.match(/\d+(\.\d{0,2})?/) ? this.value.match(/\d+(\.\d{0,2})?/)[0] : ''">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">描述</label>
+        <div class="layui-input-block">
+            <input type="text" name="description" placeholder="请输入描述" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="form">立即提交</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/pay/productSku/addPrice.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pay/productSku/addPrice.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}

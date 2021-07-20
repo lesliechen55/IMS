@@ -1,0 +1,57 @@
+﻿@model bool
+@{
+    ViewBag.Title = "操作日志";
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote quoteBox">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            @{
+                if (Model)
+                {
+                    <div class="layui-input-inline">
+                        <input type="text" id="account" name="account" class="layui-input" placeholder="请输入操作员账号" />
+                    </div>
+                }
+            }
+            <div class="layui-input-inline">
+                <input type="text" id="method" name="method" class="layui-input" placeholder="请输入操作方法名称" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="desc" name="desc" class="layui-input" placeholder="请输入操作描述" />
+            </div>
+            <div class="layui-input-inline">
+                <select id="operationType" name="operationType">
+                    <option value="">请选择操作类型</option>
+                    <option value="0">查询</option>
+                    <option value="1">添加</option>
+                    <option value="2">修改</option>
+                    <option value="3">删除</option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="startDate" name="startDate" class="layui-input" placeholder="请输入操作开始时间" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="endDate" name="endDate" class="layui-input" placeholder="请输入操作结束时间" />
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+<script type="text/html" id="toolbar">
+</script>
+@section Scripts{
+    <script type="text/javascript">
+        window.hasSuperRole = @(Model?"true":"false");
+    </script>
+    <environment include="Development">
+        <script src="~/js/admin/home/operationLog.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/admin/home/operationLog.min.js" asp-append-version="true"></script>
+    </environment>
+}

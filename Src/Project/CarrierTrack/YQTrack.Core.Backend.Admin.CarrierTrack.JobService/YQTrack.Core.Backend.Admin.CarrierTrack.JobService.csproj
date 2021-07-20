@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.30" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Admin\YQTrack.Core.Backend.Admin.Core\YQTrack.Core.Backend.Admin.Core.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.CarrierTrack.Core\YQTrack.Core.Backend.Admin.CarrierTrack.Core.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.CarrierTrack.Data\YQTrack.Core.Backend.Admin.CarrierTrack.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinjection.abstractions\2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Log">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Log.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

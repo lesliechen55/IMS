@@ -1,0 +1,164 @@
+﻿@using YQTrack.Backend.Enums
+@using YQTrack.Backend.Payment.Model.Enums
+@using YQTrack.Core.Backend.Admin.Core
+@using YQTrack.Core.Backend.Enums.Pay
+@model IframeTransferData<ProductSkuEditResponse>
+
+@{
+    Layout = "_Layout";
+}
+
+@section head{
+    <style type="text/css">
+        .layui-table {
+            margin: 0;
+        }
+    </style>
+}
+
+<fieldset class="layui-elem-field">
+    <legend>编辑商品SKU</legend>
+    <div class="layui-field-box">
+        <div class="layui-form">
+            <input type="hidden" id="productSkuId" name="productSkuId" value="@Model.Data.ProductSkuId" />
+            <div class="layui-form-item">
+                <label class="layui-form-label">商品名称</label>
+                <div class="layui-input-block">
+                    <select name="productId" lay-verify="required">
+                        @foreach (var (key, value) in Model.Data.AllProductDic)
+                        {
+                            if (key == Model.Data.ProductId)
+                            {
+                                <option value="@key" selected>@value</option>
+                            }
+                            else
+                            {
+                                <option value="@key">@value</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">会员类型</label>
+                <div class="layui-input-block">
+                    <select name="memberLevel" lay-verify="required">
+                        @foreach (var (key, value) in EnumHelper.GetSelectItem<UserMemberLevel>())
+                        {
+                            if (key == Model.Data.MemberLevel)
+                            {
+                                <option value="@key" selected>@value</option>
+                            }
+                            else
+                            {
+                                <option value="@key">@value</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">Sku类型</label>
+                <div class="layui-input-block">
+                    <select name="skuType" lay-verify="required">
+                        @foreach (var (key, value) in EnumHelper.GetSelectItem<SkuType>())
+                        {
+                            if (key == Model.Data.Type)
+                            {
+                                <option value="@key" selected>@value</option>
+                            }
+                            else
+                            {
+                                <option value="@key">@value</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">Sku编码</label>
+                <div class="layui-input-block">
+                    <input type="text" name="code" required lay-verify="required" placeholder="请输入编码" autocomplete="off" class="layui-input" value="@Model.Data.Code">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">Sku名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" required lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" value="@Model.Data.Name">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">Sku描述</label>
+                <div class="layui-input-block">
+                    <input type="text" name="desc" required lay-verify="required" placeholder="请输入描述" autocomplete="off" class="layui-input" value="@Model.Data.Description">
+                </div>
+            </div>
+
+            @*是否内部使用*@
+            <div class="layui-form-item">
+                <label class="layui-form-label">内部使用</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="isInternalUse" lay-filter="isInternalUse" lay-skin="switch" lay-text="ON|OFF" value="@Html.Raw(Model.Data.IsInternalUse?"true":"false")" @Html.Raw(Model.Data.IsInternalUse ? "checked" : "")>
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">是否启用</label>
+                <div class="layui-input-inline">
+                    <input type="checkbox" id="active" value='@Html.Raw(Model.Data.Active?"true":"false")' disabled lay-skin="switch" lay-text="开启|关闭" @Html.Raw(Model.Data.Active ? "checked" : "")>
+                </div>
+                <div class="layui-form-mid layui-word-aux" style="color:red !important">此处只是展示不能修改,修改请使用表格的开关按钮</div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="form">立即提交</button>
+                    <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<div class="layui-tab layui-tab-card" lay-filter="tabFilter">
+    <ul class="layui-tab-title">
+        <li class="layui-this">平台价格信息</li>
+        <li>业务控制信息</li>
+    </ul>
+    <div class="layui-tab-content" style="height: 335px;">
+        <div class="layui-tab-item layui-show">
+            <table id="tablePrice" class="layui-table" lay-filter="tablePrice"></table>
+            <script type="text/html" id="toolbarPrice">
+                <div class="layui-btn-container">
+                    <button class="layui-btn" lay-event="add">
+                        <i class="layui-icon">&#xe608;</i> 添加
+                    </button>
+                    <button class="layui-btn layui-btn-danger" lay-event="delete">
+                        <i class="layui-icon">&#xe640;</i> 删除
+                    </button>
+                </div>
+            </script>
+        </div>
+        <div class="layui-tab-item">
+            <table id="tableBusiness" class="layui-table" lay-filter="tableBusiness"></table>
+            <script type="text/html" id="toolbarBusiness">
+                <div class="layui-btn-container">
+                    <button class="layui-btn" lay-event="add">
+                        <i class="layui-icon">&#xe608;</i> 添加
+                    </button>
+                    <button class="layui-btn layui-btn-danger" lay-event="delete">
+                        <i class="layui-icon">&#xe640;</i> 删除
+                    </button>
+                </div>
+            </script>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/pay/productSku/edit.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pay/productSku/edit.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}

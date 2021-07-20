@@ -1,0 +1,31 @@
+﻿@model IframeTransferData
+@{
+    Layout = "_Layout";
+}
+<div class="layui-form">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">下架原因:</label>
+        <div class="layui-input-block">
+            <textarea name="reason" id="reason" style="min-height: 220px;" lay-verify="required|reason" placeholder="请输入下架原因!!不超过300字" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formReject">立即提交</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        window.invokeEle = '@Model.InvokeElementId';
+    </script>
+    <environment include="Development">
+        <script src="~/js/freight/inquiryManage/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/freight/inquiryManage/index.min.js" asp-append-version="true"></script>
+    </environment>
+}

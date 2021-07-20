@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "竞价管理";
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote quoteBox">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="quoteId" name="quoteId" placeholder="竞价的报价ID">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="quoteNo" name="quoteNo" placeholder="竞价单号 QTXXXX">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="inquiryNo" name="inquiryNo" placeholder="询价单号 INXXXX">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="companyName" name="companyName" placeholder="公司名称(模糊查询)">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="startTime" name="startTime" placeholder="竞价开始时间">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="endTime" name="endTime" placeholder="竞价结束时间">
+            </div>
+            <div class="layui-input-inline">
+                <select id="inquiryStatus" name="inquiryStatus">
+                    <option value="">请选择询价单状态</option>
+                    <option value="0">发布中</option>
+                    <option value="1">已截止</option>
+                    <option value="2">交易成功</option>
+                    <option value="3">交易失败</option>
+                    <option value="4">管理员下架</option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select id="cancelStatus" name="cancelStatus">
+                    <option value="">请选择竞价单状态</option>
+                    <option value="false">未撤销</option>
+                    <option value="true">已撤销</option>
+                </select>
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+            <a class="layui-btn layui-btn-normal" id="export" href="@Url.Action("QuoteInfo","Export")">导出</a>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+<script type="text/html" id="toolbar">
+</script>
+@section Scripts{
+    <script src="~/lib/jquery.min.js" asp-append-version="true"></script>
+    <environment include="Development">
+        <script src="~/js/freight/home/quote.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery.fileDownload.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/freight/home/quote.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery.fileDownload.min.js" asp-append-version="true"></script>
+    </environment>
+}

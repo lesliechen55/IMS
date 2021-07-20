@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <div class="layui-input-inline" style="width:300px">
+                <input type="text" class="layui-input" id="filter" name="filter" value="@ViewBag.Filter" placeholder="请输入缓存键匹配规则（不能少于四个字符）" />
+            </div>
+            <button class="layui-btn layui-btn-danger" id="batchDel" @Html.Raw(ViewBag.AllowDelete ? "" : "style=\"display:none\"")><i class="layui-icon">&#xe640;</i> 批量删除</button>
+            <button id="scanning" class="layui-btn layui-btn-disabled" @Html.Raw(ViewBag.AllowDelete ? "style=\"display:none\"" : "") disabled><i class="layui-icon">&#xe63d;</i> 正在扫描中 </button>
+            <button class="layui-btn layui-btn-warm" id="cancel" @Html.Raw(ViewBag.AllowDelete ? "style=\"display:none\"" : "")><i class="layui-icon">&#xe642;</i> 取消 </button>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table">
+    <colgroup>
+        <col>
+    </colgroup>
+    <thead>
+        <tr>
+            <th>缓存键</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/devOps/trackInfoKeyFilterDelete/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/devOps/trackInfoKeyFilterDelete/index.min.js" asp-append-version="true"></script>
+    </environment>
+}

@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "角色中心";
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote quoteBox">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            <div class="layui-input-inline">
+                <input type="text" id="name" name="name" class="layui-input" placeholder="请输入角色名称" />
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+<table id="roleTable" class="layui-table" lay-filter="roleTable"></table>
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn" lay-event="add"><i class="layui-icon">&#xe608;</i> 添加</button>
+        <button class="layui-btn layui-btn-normal" lay-event="update">
+            <i class="layui-icon">&#xe642;</i> 编辑
+        </button>
+        <button class="layui-btn layui-btn-warm" lay-event="set">
+            <i class="layui-icon">&#xe614;</i> 查看/编辑权限
+        </button>
+        <button class="layui-btn layui-btn-danger" lay-event="delete">
+            <i class="layui-icon">&#xe640;</i> 强制删除
+        </button>
+    </div>
+</script>
+<script type="text/html" id="isActive">
+    <input type="checkbox" disabled="disabled" lay-skin="switch" lay-text="开启|关闭" {{ d.isActive ? 'checked' : '' }}>
+</script>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/admin/role/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/admin/role/index.min.js" asp-append-version="true"></script>
+    </environment>
+}

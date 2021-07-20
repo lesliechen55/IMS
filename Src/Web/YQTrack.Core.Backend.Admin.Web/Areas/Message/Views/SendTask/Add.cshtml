@@ -1,0 +1,81 @@
+﻿@using YQTrack.Backend.Message.Model.Enums;
+@model IframeTransferData<UserRoleTypeResponse>
+@{
+    Layout = "_Layout";
+}
+<div class="layui-form">
+    <input type="hidden" name="templateTypeId" value="@Model.Id" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">发送类型</label>
+        <div class="layui-input-block">
+            <input type="radio" name="sendType" value="0" title="按用户发送" lay-filter="sendType" checked>
+            <input type="radio" name="sendType" value="1" title="按角色发送" lay-filter="sendType">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">模板名称</label>
+        <div class="layui-input-block">
+            <input type="text" autocomplete="off" class="layui-input" value="@Model.Data.TemplateName" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item" id="divRole" style="display:none">
+        <label class="layui-form-label">用户角色</label>
+        <div class="layui-input-block">
+            <select name="userRoleType" lay-verify="required">
+                @foreach (var item in Model.Data.UserRoleTypes)
+                {
+                    <option value="@item.UserRoleTypeId">@item.UserRoleTypeName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">任务描述</label>
+        <div class="layui-input-block">
+            <input type="text" name="remarks" required lay-verify="required" autocomplete="off" placeholder="请输入任务描述" class="layui-input" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text" id="divDetail">
+        @switch (Model.Data.Channel)
+        {
+            case ChannelSend.APP:
+                <label class="layui-form-label">推送token：</label>
+                break;
+            case ChannelSend.Email:
+                <label class="layui-form-label">用户邮箱：</label>
+                break;
+            case ChannelSend.SiteMessage:
+                <label class="layui-form-label">站内信地址：</label>
+                break;
+            default:
+                break;
+        }
+        <div class="layui-input-block">
+            <!-- begin code -->
+            <textarea class="layui-textarea" style="height:170px" id="objDetails" name="objDetails" lay-verify="detail" autocomplete="off" placeholder="每个一行，最多输入40个，行末请勿增加任何标点，直接用回车切换！"></textarea>
+            <!-- end code-->
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">立即发送</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="sendAction" title="立即发送" value="1">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="form">立即提交</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <environment include="Development">
+        <script src="~/js/message/sendTask/add.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/message/sendTask/add.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}

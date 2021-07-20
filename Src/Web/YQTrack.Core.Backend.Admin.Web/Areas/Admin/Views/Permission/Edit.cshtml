@@ -1,0 +1,128 @@
+﻿@model IframeTransferData<PermissionResponse>
+@{
+    Layout = "_Layout";
+}
+<div class="layui-form">
+    <input type="hidden" name="id" value="@Model.Data.Id" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">权限别名</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" required lay-verify="required" placeholder="请输入权限别名" autocomplete="off" class="layui-input" value="@Model.Data.Name">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">菜单类型</label>
+        <div class="layui-input-block">
+            <select name="menuType" lay-verify="required">
+                <option value="">请选择一个菜单类型</option>
+                <option value="0">顶级菜单</option>
+                <option value="1">菜单组</option>
+                <option value="2">功能</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="width: 81px;">顶级菜单Key</label>
+        <div class="layui-input-block" style="margin-left: 111px;">
+            <input type="text" name="topMenuKey" placeholder="请输入顶级菜单Key(是顶级菜单必填)" autocomplete="off" class="layui-input" value="@Model.Data.TopMenuKey">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">区域</label>
+        <div class="layui-input-block">
+            <input type="text" name="areaName" placeholder="请输入区域(选填)" autocomplete="off" class="layui-input"
+                   value="@(Model.Data.AreaName??string.Empty)">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">控制器</label>
+        <div class="layui-input-block">
+            <input type="text" name="controllerName" placeholder="请输入控制器(根菜单则选填)" autocomplete="off" class="layui-input" value="@Model.Data.ControllerName">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">行为</label>
+        <div class="layui-input-block">
+            <input type="text" name="actionName" placeholder="请输入行为(根菜单则选填)" autocomplete="off" class="layui-input" value="@Model.Data.ActionName">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">多权限</label>
+        <div class="layui-input-inline">
+            <input id="multiPower" name="isMultiAction" type="checkbox" lay-skin="switch" lay-filter="multiPower" lay-text="是|否" value="true" @Html.Raw(Model.Data.IsMultiAction ? "checked" : "")>
+        </div>
+        <div class="layui-form-mid layui-word-aux">是否匹配多个权限（同一个Action对应多个功能模块）</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">权限代码</label>
+        <div class="layui-input-block">
+            <input type="text" name="fullName" placeholder="请输入权限代码(根菜单则选填)" autocomplete="off" class="layui-input" lay-verify="fullName" value="@Model.Data.FullName">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">请求路径</label>
+        <div class="layui-input-block">
+            <input type="text" name="url" placeholder="请输入请求路径(根菜单则选填)" autocomplete="off" class="layui-input" value="@Model.Data.Url">
+        </div>
+    </div>
+
+    @*渲染一颗下拉树*@
+    <div id="LAY-auth-tree-convert-select-dom"></div>
+    <script type="text/html" id="LAY-auth-tree-convert-select">
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择父级</label>
+            <div class="layui-input-block">
+                <select name="parentId" class="layui-input" lay-filter="{{d.layFilter}}">
+                    <option value="-1">默认根菜单</option>
+                    {{# layui.each(d.list, function(index, item) { }}
+                    {{# if(item.checked){ }}
+                    <option value="{{item.value}}" selected="selected">{{item.name}}</option>
+                    {{# }else{ }}
+                    <option value="{{item.value}}">{{item.name}}</option>
+                    {{# } }}
+                    {{# });}}
+                </select>
+            </div>
+        </div>
+    </script>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序号</label>
+        <div class="layui-input-block">
+            <input type="number" name="sort" required lay-verify="required" placeholder="请输入排序号" autocomplete="off" class="layui-input" value="@Model.Data.Sort">
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">图标</label>
+        <div class="layui-input-block">
+            <input type="text" name="icon" placeholder="请选择图标" autocomplete="off" class="layui-input"
+                   value="@Model.Data.Icon">
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+            <textarea name="remark" required lay-verify="required" placeholder="请输入备注内容" class="layui-textarea">@Model.Data.Remark</textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formEdit">立即提交</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+
+<input id="parentId" type="hidden" value="@Model.Data.ParentId" />
+<input id="menuType" type="hidden" value="@((int)Model.Data.MenuType)" />
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/admin/permission/edit.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/admin/permission/edit.min.js" asp-append-version="true"></script>
+    </environment>
+}

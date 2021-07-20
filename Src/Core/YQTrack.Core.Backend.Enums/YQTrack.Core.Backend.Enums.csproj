@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="YQTrack.Backend.Enums">
+      <HintPath>..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Enums.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.Payment.Model">
+      <HintPath>..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Payment.Model.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

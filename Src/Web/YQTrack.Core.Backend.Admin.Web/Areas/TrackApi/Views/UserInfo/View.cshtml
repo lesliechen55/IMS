@@ -1,0 +1,92 @@
+﻿@model IframeTransferData<UserInfoViewResponse>
+@{
+    Layout = "_Layout";
+}
+<div class="layui-form-item">
+</div>
+<fieldset class="layui-elem-field">
+    <legend>用户额度</legend>
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">用户名称</label>
+            <div class="layui-input-inline" style="width: 200px;">
+                <input type="text" class="layui-input" value="@Model.Data.UserName" disabled>
+            </div>
+            <div class="layui-form-mid"> &nbsp;购买额度</div>
+            <div class="layui-input-inline" style="width: 100px;">
+                <input type="text" class="layui-input" value="@Model.Data.Quota" disabled>
+            </div>
+            <div class="layui-form-mid"> &nbsp;剩余额度</div>
+            <div class="layui-input-inline" style="width: 100px;">
+                <input type="text" class="layui-input" value="@Model.Data.Remain" disabled>
+            </div>
+            <div class="layui-form-mid"> &nbsp;每日最大请求量</div>
+            <div class="layui-input-inline" style="width: 100px;">
+                <input type="text" class="layui-input" value="@Model.Data.MaxTrackReq" disabled>
+            </div>
+            <div class="layui-form-mid"> &nbsp;今日已使用</div>
+            <div class="layui-input-inline" style="width: 100px;">
+                <input type="text" class="layui-input" value="@Model.Data.TodayUsed" disabled>
+            </div>
+            <div class="layui-input-inline" style="width: 100px;">
+                <button class="layui-btn" lay-submit lay-filter="order">查看购买记录</button>
+            </div>
+        </div>
+        <div class="layui-inline" style="margin-left:20px">
+            <div class="layui-input-inline" style="width: 100px;">
+                <input type="hidden" id="hiUserNo" name="userNo" value="@Model.Data.UserNo">
+                <button class="layui-btn" lay-submit lay-filter="config">查看用户配置</button>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<fieldset class="layui-elem-field">
+    <legend>对账单(UTC时间)</legend>
+    <div class="layui-form-item">
+        <blockquote class="layui-elem-quote">
+            <form class="layui-form">
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        <input type="hidden" id="hiUserId" name="userId" value="@Model.Data.UserId">
+                        <input type="text" class="layui-input" id="invoiceStartTime" placeholder="请选择开始时间" name="invoiceStartTime" value="@DateTime.Now.AddMonths(-3).ToString("yyyy-MM")">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="invoiceEndTime" placeholder="请选择结束时间" name="invoiceEndTime" value="@DateTime.Now.ToString("yyyy-MM")">
+                    </div>
+                    <a class="layui-btn" id="invoiceSearch">搜索</a>
+                </div>
+            </form>
+        </blockquote>
+        <table lay-filter="invoice" id="invoice"></table>
+    </div>
+</fieldset>
+
+<fieldset class="layui-elem-field">
+    <legend>消耗明细(UTC时间)</legend>
+    <div class="layui-form-item">
+        <blockquote class="layui-elem-quote">
+            <form class="layui-form">
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        <input type="hidden" name="userId" value="@Model.Data.UserId">
+                        <input type="text" class="layui-input" id="trackCountStartTime" placeholder="请选择开始时间" name="trackCountStartTime" value="@DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd")">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="trackCountEndTime" placeholder="请选择结束时间" name="trackCountEndTime" value="@DateTime.Now.ToString("yyyy-MM-dd")">
+                    </div>
+                    <a class="layui-btn" id="trackCountSearch">搜索</a>
+                </div>
+            </form>
+        </blockquote>
+        <table lay-filter="trackCount" id="trackCount"></table>
+    </div>
+</fieldset>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/trackApi/userInfo/view.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/trackApi/userInfo/view.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}

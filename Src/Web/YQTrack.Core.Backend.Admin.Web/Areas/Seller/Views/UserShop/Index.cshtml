@@ -1,0 +1,66 @@
+﻿
+@model UserShopSelectDataResponse
+@{
+    Layout = "_Layout";
+}
+<fieldset class="layui-elem-field">
+    <legend>用户信息</legend>
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">用户ID</label>
+            <div class="layui-input-inline" style="width: 200px;">
+                <input type="text" class="layui-input" value="@Model.UserRouteDto.UserId" disabled>
+            </div>
+            <div class="layui-form-mid"> &nbsp;用户昵称</div>
+            <div class="layui-input-inline" style="width: 200px;">
+                <input type="text" class="layui-input" value="@Model.UserRouteDto.NickName" disabled>
+            </div>
+            <div class="layui-form-mid"> &nbsp;注册邮箱</div>
+            <div class="layui-input-inline" style="width: 200px;">
+                <input type="text" class="layui-input" value="@Model.UserRouteDto.Email" disabled>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            <input type="hidden" id="userRoute" name="userRoute" value="@Model.UserRoute" />
+            <div class="layui-input-inline">
+                <select id="platformType" name="platformType">
+                    <option value="">请选择店铺平台</option>
+                    @foreach (var (key, value) in Model.PlatTypeList)
+                    {
+                        <option value="@key">@value</option>
+                    }
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="shopName" name="shopName" placeholder="请输入店铺名称" />
+            </div>
+            <div class="layui-input-inline">
+                <select id="state" name="state">
+                    <option value="">请选择店铺状态</option>
+                    @foreach (var (key, value) in Model.ShopStateList)
+                    {
+                        <option value="@key">@value</option>
+                    }
+                </select>
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/seller/userShop/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/seller/userShop/index.min.js" asp-append-version="true"></script>
+    </environment>
+}
+

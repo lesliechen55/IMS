@@ -1,0 +1,95 @@
+﻿@model IframeTransferData<PaymentShowResponse>
+
+@{
+    Layout = "_Layout";
+}
+<fieldset class="layui-elem-field">
+    <legend>订单编号：@Model.Data.OrderId</legend>
+    <div class="layui-field-box">
+        <table class="layui-table" lay-filter="detail">
+            <thead>
+                <tr>
+                    <th lay-data="{field:'orderId', hide:true}">订单号</th>
+                    <th lay-data="{field:'orderName'}">订单名称</th>
+                    <th lay-data="{field:'serviceType', width: 88}">服务类型</th>
+                    <th lay-data="{field:'currencyType', width: 88}">货币类型</th>
+                    <th lay-data="{field:'providerId', width: 125}">支付商</th>
+                    <th lay-data="{field:'platformType', width: 100}">用户平台</th>
+                    <th lay-data="{field:'paymentAmount', width: 88}">支付金额</th>
+                    <th lay-data="{field:'paymentStatus', width: 100 }">支付状态</th>
+                    <th lay-data="{field:'providerTradeNo'}">交易号码</th>
+                    <th lay-data="{field:'createAt',width:160}">创建时间</th>
+                    <th lay-data="{field:'updateAt',width:160}">修改时间</th>
+                    <th lay-data="{field:'operate', toolbar: '#bar', width:130}">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Data.OrderId</td>
+                    <td>@Model.Data.OrderName</td>
+                    <td>@Model.Data.ServiceType</td>
+                    <td>@Model.Data.CurrencyType</td>
+                    <td>@Model.Data.ProviderId</td>
+                    <td>@Model.Data.PlatformType</td>
+                    <td>@Model.Data.PaymentAmount</td>
+                    <td>@Model.Data.PaymentStatus</td>
+                    <td>@Model.Data.ProviderTradeNo</td>
+                    <td>@Model.Data.CreateAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td>@Model.Data.UpdateAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</fieldset>
+<script type="text/html" id="bar">
+    <a class="layui-btn layui-btn layui-btn-xs" lay-event="viewOrder">查订单</a>
+    {{#  if(d.paymentStatus == "支付成功" && d.providerId!="线下支付"){ }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="refund">退款</a>
+    {{#  } }}
+</script>
+<fieldset class="layui-elem-field">
+    <legend>支付日志</legend>
+    <div class="layui-field-box">
+        <table class="layui-table" lay-filter="log">
+            @*<colgroup>
+                    <col width="150">
+                    <col width="200">
+                    <col>
+                </colgroup>*@
+            <thead>
+                <tr>
+                    <th lay-data="{field:'action'}">操作类型</th>
+                    @*<th lay-data="{field:'request'}">操作请求</th>
+                        <th lay-data="{field:'response'}">操作响应</th>*@
+                    <th lay-data="{field:'userId'}">操作用户</th>
+                    <th lay-data="{field:'clientIP'}">客户IP</th>
+                    <th lay-data="{field:'success'}">是否成功</th>
+                    <th lay-data="{field:'createAt'}">创建时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @Model.Data.PaymentLog)
+                {
+                    <tr>
+                        <td>@item.Action</td>
+                        @*<td>@item.Request</td>
+                            <td>@item.Response</td>*@
+                        <td>@item.UserId</td>
+                        <td>@item.ClientIP</td>
+                        <td><input type="checkbox" name="switch" lay-skin="switch" lay-text="是|否" @Html.Raw(item.Success ? "checked" : "") disabled></td>
+                        <td>@item.CreateAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</fieldset>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/pay/payment/view.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pay/payment/view.min.js" asp-append-version="true"></script>
+    </environment>
+}

@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "注销用户查询";
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote quoteBox">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            <div class="layui-input-inline">
+                <input type="text" autocomplete="on" id="userId" name="userId" class="layui-input" placeholder="请输入用户ID" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" autocomplete="on" id="email" name="email" class="layui-input" placeholder="请输入用户邮箱" />
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+<script type="text/html" id="toolbar">
+</script>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/business/userUnregister/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/business/userUnregister/index.min.js" asp-append-version="true"></script>
+    </environment>
+}

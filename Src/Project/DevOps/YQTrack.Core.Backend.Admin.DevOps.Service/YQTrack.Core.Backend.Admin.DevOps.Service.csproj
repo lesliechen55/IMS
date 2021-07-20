@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Admin\YQTrack.Core.Backend.Admin.Data\YQTrack.Core.Backend.Admin.Data.csproj" />
+    <ProjectReference Include="..\..\Message\YQTrack.Core.Backend.Admin.Message.Core\YQTrack.Core.Backend.Admin.Message.Core.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.DevOps.DTO\YQTrack.Core.Backend.Admin.DevOps.DTO.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="YQTrack.Log">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Log.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.SentinelRedis">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.SentinelRedis.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Standard.Configuration">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Standard.Configuration.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

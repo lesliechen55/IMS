@@ -1,0 +1,75 @@
+﻿@using YQTrack.Backend.Enums
+@using YQTrack.Backend.Payment.Model.Enums
+@model Dictionary<long, string>
+@{
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="keyword" name="keyword" placeholder="请输入活动名称" />
+            </div>
+
+            <div class="layui-input-inline">
+                <select name="activityType">
+                    <option value="-1">请选择活动类型</option>
+                    <option value="0">未知</option>
+                    <option value="1">通用活动</option>
+                    <option value="2">优惠券</option>
+                </select>
+            </div>
+
+            <div class="layui-input-inline" style="width: 150px;">
+                <select id="productId" name="productId">
+                    <option value="">请选择商品名称</option>
+                    @foreach (var (key, value) in Model)
+                    {
+                        <option value="@key">@value</option>
+                    }
+                </select>
+            </div>
+
+            <div class="layui-input-inline">
+                <select name="activityStatus">
+                    <option value="-1">请选择活动状态</option>
+                    <option value="0">未知</option>
+                    <option value="1">待审核</option>
+                    <option value="2">已通过</option>
+                    <option value="3">已上架</option>
+                    <option value="4">已结束</option>
+                    <option value="5">已下架</option>
+                    <option value="6">已驳回</option>
+                </select>
+            </div>
+
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="startTime" lay-verify="date" name="startTime" onclick="layui.laydate({elem: this})" placeholder="请选择开始时间">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="endTime" lay-verify="date" name="endTime" onclick="layui.laydate({elem: this})" placeholder="请选择结束时间">
+            </div>
+
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn" lay-event="add"> <i class="layui-icon">&#xe608;</i>添加</button>
+    </div>
+</script>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/pay/activity/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pay/activity/index.min.js" asp-append-version="true"></script>
+    </environment>
+}
+

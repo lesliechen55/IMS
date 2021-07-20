@@ -1,0 +1,208 @@
+﻿@using YQTrack.Core.Backend.Admin.Core
+@using YQTrack.Backend.Enums
+@using YQTrack.Backend.Payment.Model.Enums
+@model IframeTransferData<ActivityPageDataResponse>
+@{
+    Layout = "_Layout";
+}
+@section head
+{
+    <link rel="stylesheet" href="~/module/formSelects-v4/formSelects-v4.css" asp-append-version="true" />
+    <style type="text/css">
+        .reqired {
+            color: red;
+            font-weight: bold;
+            padding-right: 5px;
+            vertical-align: middle;
+        }
+
+        .layui-form-label {
+            width: 81px;
+            padding-right: 12px;
+        }
+    </style>
+}
+<form id="activityInfo" class="layui-form">
+    <input type="hidden" name="activityId" id="hActivityId" value="@Model.Data.ActivityId" />
+    <input type="hidden" id="hProductId" value="@Model.Data.ProductId" />
+    <input type="hidden" id="hSkuCodes" value="@Model.Data.SkuCodes" />
+    <input type="hidden" id="hRules" value="@Model.Data.Rules" />
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">中文名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="cnName" required lay-verify="required" disabled autocomplete="off" class="layui-input" value="@Model.Data.CnName">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">英文名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="enName" required lay-verify="required" disabled autocomplete="off" class="layui-input" value="@Model.Data.EnName">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">活动描述</label>
+        <div class="layui-input-block">
+            <input type="text" name="description" required lay-verify="required" disabled autocomplete="off" class="layui-input" value="@Model.Data.FDescription">
+        </div>
+    </div>
+
+    <!-- 活动类型 1：通用，2：优惠券-->
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">活动类型</label>
+            <div class="layui-input-inline">
+                <select name="activityType" lay-verify="required" disabled>
+                    @foreach (var (key, value) in EnumHelper.GetSelectItem<ActivityType>())
+                    {
+                        if (Model.Data.ActivityType == value)
+                        {
+                            <option value="@key" selected>@value</option>
+                        }
+                        else
+                        {
+
+                            <option value="@key">@value</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <!-- 优惠类型 1：金额优惠，2：额度优惠-->
+        <div class="layui-inline">
+            <label class="layui-form-label">优惠类型</label>
+            <div class="layui-input-inline">
+                <select name="discountType" lay-verify="required" lay-filter="discountTypefilter" disabled>
+                    @foreach (var (key, value) in EnumHelper.GetSelectItem<ActivityDiscountType>())
+                    {
+                        if (Model.Data.DiscountType == value)
+                        {
+                            <option value="@key" selected>@value</option>
+                        }
+                        else
+                        {
+
+                            <option value="@key">@value</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <!-- 优惠方式：1：每满减/每满赠,2：一次性满减/满赠,3：按比例优惠-->
+        <div class="layui-inline">
+            <label class="layui-form-label">优惠方式</label>
+            <div class="layui-input-inline">
+                <select name="couponMode" lay-verify="required" disabled>
+                    @foreach (var (key, value) in EnumHelper.GetSelectItem<CouponMode>())
+                    {
+                        if (Model.Data.CouponMode == value)
+                        {
+                            <option value="@key" selected>@value</option>
+                        }
+                        else
+                        {
+
+                            <option value="@key">@value</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- 业务类型：10：买家跟踪，21：卖家跟踪,22，卖家邮件，31：货代跟踪，41：Api跟踪-->
+    <div class="layui-form-item">
+        <label class="layui-form-label">业务类型</label>
+        <div class="layui-input-block">
+            <select name="businessType" id="businessType" disabled>
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<BusinessCtrlType>())
+                {
+                    if (Model.Data.BusinessType == value)
+                    {
+                        <option value="@key" selected>@value</option>
+                    }
+                    else
+                    {
+
+                        <option value="@key">@value</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+
+    <!-- FProductId-->
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">活动商品</label>
+            <div class="layui-input-inline" style="width:150px;">
+                <select name="productId" id="productId" lay-filter="productIdfilter" lay-verify="required" disabled></select>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <div class="layui-input-inline" style="width:1250px; ">
+                <select name="skuCodes" id="skuCodes" xm-select="skuCodes" xm-select-height="36px" multiple disabled></select>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">开始日期</label>
+            <div class="layui-input-inline">
+                <input type="text" name="startTime" id="startTime"  disabled  value="@Model.Data.StartTime.ToShortDateString().Replace("/","-")" class="layui-input" >
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">截至日期</label>
+            <div class="layui-input-inline">
+                <input type="text" name="endTime" id="endTime"  disabled  value="@Model.Data.EndTime.ToShortDateString().Replace("/","-")" class="layui-input" >
+            </div>
+        </div>
+    </div>
+
+    <!--活动规则-->
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <div class="layui-input-inline" style="width:96px;">
+                <label class="layui-form-label">活动规则</label>
+            </div>
+        </div>
+        <table id="activityRule" lay-filter="activityRule"></table>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">有效期</label>
+            <div class="layui-input-block">
+                <input type="radio" name="term" value="0" disabled title="长期有效" @Html.Raw(Model.Data.Term == 0 ? "checked='checked'" : "")>
+                <input type="radio" name="term" value="-1" disabled  title="按照活动时间" @Html.Raw(Model.Data.Term == -1 ? "checked='checked'" : "")>
+                <input type="radio" name="term" value="1" disabled  title="优惠领取之日后" @Html.Raw(Model.Data.Term > 0 ? "checked='checked'" : "")>
+            </div>
+        </div>
+
+        <div class="layui-inline">
+            <input type="text" name="days" class="layui-input" disabled maxlength="3" value="@(Model.Data.Term>0?(@Model.Data.Term):0)" @Html.Raw(Model.Data.Term <= 0 ? "style='display:none;'" : "")>
+        </div>
+
+
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">内部活动</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="internalUse"  lay-filter="locked" lay-skin="switch" lay-text="ON|OFF" value="@Html.Raw(Model.Data.InternalUse?"true":"false")" @Html.Raw(Model.Data.InternalUse ? "checked" : "")>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/module/formSelects-v4/formSelects-v4.js" asp-append-version="true"></script>
+        <script src="~/js/pay/activity/view.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/module/formSelects-v4/formSelects-v4.min.js" asp-append-version="true"></script>
+        <script src="~/js/pay/activity/view.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}

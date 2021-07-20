@@ -1,0 +1,207 @@
+﻿@model IframeTransferData<InvoiceApplyShowResponse>
+@{
+    Layout = "_Layout";
+}
+@section head{
+    <style type="text/css">
+        .layui-form-label {
+            width: 100px;
+        }
+
+        .layui-input-block {
+            margin-left: 140px;
+        }
+
+        .image {
+            border: 1px solid #ddd;
+            padding: 5px;
+            background-color: white;
+            box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            opacity: 1;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        #imgDiv:hover .middle {
+            opacity: 1;
+        }
+    </style>
+}
+<div class="layui-form">
+    <fieldset class="layui-elem-field">
+        <legend>
+            发票详情
+        </legend>
+        <div class="layui-form-item">
+            <label class="layui-form-label">注册邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@Model.Data.Email" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">申请时间</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@Model.Data.CreateAt" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">发票类型</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@Model.Data.InvoiceType" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">总金额</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@(Model.Data.CurrencyType + Model.Data.Amount)" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@Model.Data.Status" disabled>
+            </div>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(Model.Data.SendInfo))
+        {
+            <div class="layui-form-item">
+                <label class="layui-form-label">派送信息</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="@Model.Data.SendInfo" disabled>
+                </div>
+            </div>
+        }
+        <div class="layui-form-item">
+            <label class="layui-form-label">注册公司名称</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@Model.Data.CompanyName" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">纳税人识别号</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" value="@Model.Data.TaxNo" disabled>
+            </div>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(Model.Data.TaxPayerCertificateUrl))
+        {
+            <div class="layui-form-item">
+                <label class="layui-form-label">一般纳税人证明</label>
+                <div class="layui-input-block" id="imgDiv">
+                    <img id="img" class="image" width="500" height="200" lay-verify="formFile" layer-pid="1" layer-index="1" layer-src="@Model.Data.TaxPayerCertificateUrl" asp-append-version="true" src="@Model.Data.TaxPayerCertificateUrl" alt="一般纳税人证明" style="cursor:pointer" />
+                </div>
+            </div>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.Data.Bank))
+        {
+            <div class="layui-form-item">
+                <label class="layui-form-label">开户银行</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="@Model.Data.Bank" disabled>
+                </div>
+            </div>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.Data.BankAccount))
+        {
+            <div class="layui-form-item">
+                <label class="layui-form-label">开户账号</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="@Model.Data.BankAccount" disabled>
+                </div>
+            </div>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.Data.Address))
+        {
+            <div class="layui-form-item">
+                <label class="layui-form-label">注册地址</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="@Model.Data.Address" disabled>
+                </div>
+            </div>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.Data.Telephone))
+        {
+            <div class="layui-form-item">
+                <label class="layui-form-label">注册电话</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="@Model.Data.Telephone" disabled>
+                </div>
+            </div>
+        }
+        <div class="layui-form-item">
+            <label class="layui-form-label">收件信息</label>
+            <div class="layui-input-block">
+                <label class="layui-form-label-col">@Model.Data.ExpressAddress @Model.Data.Contact @Model.Data.InvoiceEmail @Model.Data.Phone</label>
+            </div>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(Model.Data.Remark))
+        {
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注信息</label>
+                <div class="layui-input-block">
+                    <label class="layui-form-label-col">@Model.Data.Remark</label>
+                </div>
+            </div>
+        }
+    </fieldset>
+    <fieldset class="layui-elem-field">
+        <legend>
+            交易记录
+        </legend>
+        <table class="layui-table" lay-filter="payment">
+            <thead>
+                <tr>
+                    <th lay-data="{field:'orderId', width:168}">订单号</th>
+                    <th lay-data="{field:'orderName', width:118}">商品名称</th>
+                    <th lay-data="{field:'paymentAmount', width:118}">金额</th>
+                    <th lay-data="{field:'provider'}">支付类型</th>
+                    <th lay-data="{field:'businessTime', width:160}">交易时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Data.InvoicePaymentList)
+                {
+                <tr>
+                    <td>@item.OrderId</td>
+                    <td>@item.OrderName</td>
+                    <td>@(item.CurrencyType + item.PaymentAmount)</td>
+                    <td>@item.Provider</td>
+                    <td>@item.PaymentCreateTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+    </fieldset>
+    @if (Model.Data.Status == "等待审核")
+    {
+        <div class="layui-form-item">
+            <div class="layui-input-block" style="padding-left:500px">
+                <input type="hidden" id="hiId" value="@Model.Data.InvoiceApplyId" />
+                <input type="hidden" id="hiEmail" value="@Model.Data.InvoiceEmail" />
+                <button id="pass" class="layui-btn">通过</button>
+                <button class="layui-btn layui-btn-danger" id="reject">驳回</button>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/pay/invoiceApply/view.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pay/invoiceApply/view.min.js" type="text/javascript" asp-append-version="true"></script>
+    </environment>
+}

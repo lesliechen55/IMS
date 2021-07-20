@@ -1,0 +1,77 @@
+﻿@model YQTrack.Core.Backend.Admin.Web.Areas.Freight.Models.Response.MainResponse
+@{
+    ViewData["Title"] = "报价中心";
+    Layout = "_Layout";
+}
+<div class="layui-row layui-col-space10 panel_box" style="margin-top: 5px;">
+    <div class="panel layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+        <a href="javascript:;">
+            <div class="panel_icon layui-bg-orange">
+                <i class="layui-anim seraph icon-wechat" data-icon="icon-icon10"></i>
+            </div>
+            <div class="panel_word">
+                <span>@Model.TotalChannel</span>
+                <em>渠道总数</em>
+                <cite class="layui-hide">报价中心</cite>
+            </div>
+        </a>
+    </div>
+    <div class="panel layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+        <a href="javascript:;">
+            <div class="panel_icon layui-bg-green">
+                <i class="layui-anim seraph icon-icon10" data-icon="icon-icon10"></i>
+            </div>
+            <div class="panel_word">
+                <span>@Model.TotalInquiry</span>
+                <em>询价总数</em>
+                <cite class="layui-hide">报价中心</cite>
+            </div>
+        </a>
+    </div>
+    <div class="panel layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+        <a href="javascript:;">
+            <div class="panel_icon layui-bg-red">
+                <i class="layui-anim seraph icon-look" data-icon="icon-icon10"></i>
+            </div>
+            <div class="panel_word">
+                <span>@Model.TotalQuote</span>
+                <em>竞价总数</em>
+                <cite class="layui-hide">报价中心</cite>
+            </div>
+        </a>
+    </div>
+    <div class="panel layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+        <a href="javascript:;">
+            <div class="panel_icon layui-bg-red">
+                <i class="layui-anim seraph icon-vip" data-icon="icon-icon10"></i>
+            </div>
+            <div class="panel_word">
+                <span>@Model.TotalCarrier</span>
+                <em>审核通过运输商总数</em>
+                <cite class="layui-hide">报价中心</cite>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="layui-btn-container">
+    <a class="layui-btn layui-btn-lg" id="export1" href="@Url.Action("CarrierInfo","Export")">
+        <i class="layui-icon layui-icon-export"></i> 数据导出-最近7天报价有更新的运输商
+    </a>
+    <a class="layui-btn layui-btn-lg layui-btn-normal" id="export2" href="@Url.Action("ValidChannelInfo","Export")">
+        <i class="layui-icon layui-icon-export"></i> 数据导出-查询发布且未删除且没有过期的渠道信息
+    </a>
+    <a class="layui-btn layui-btn-lg layui-btn-normal" id="export3" href="@Url.Action("InvalidChannelInfo","Export")">
+        <i class="layui-icon layui-icon-export"></i> 数据导出-查询失效(自然过期或者停用)渠道信息,时间范围本周
+    </a>
+</div>
+@section Scripts{
+    <script src="~/lib/jquery.min.js" asp-append-version="true"></script>
+    <environment include="Development">
+        <script src="~/js/freight/home/index.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery.fileDownload.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/freight/home/index.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery.fileDownload.min.js" asp-append-version="true"></script>
+    </environment>
+}

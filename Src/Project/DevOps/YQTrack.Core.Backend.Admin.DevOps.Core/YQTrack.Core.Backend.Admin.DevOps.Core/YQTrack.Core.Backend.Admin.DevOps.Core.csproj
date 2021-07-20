@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.10.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="YQTrack.Standard.Configuration">
+      <HintPath>..\..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Standard.Configuration.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

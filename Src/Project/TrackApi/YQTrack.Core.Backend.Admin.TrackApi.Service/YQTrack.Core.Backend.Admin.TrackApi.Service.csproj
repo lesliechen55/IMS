@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="Dapper" Version="2.0.30" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Admin\YQTrack.Core.Backend.Admin.Core\YQTrack.Core.Backend.Admin.Core.csproj" />
+    <ProjectReference Include="..\..\..\Admin\YQTrack.Core.Backend.Admin.Data\YQTrack.Core.Backend.Admin.Data.csproj" />
+    <ProjectReference Include="..\..\Message\YQTrack.Core.Backend.Admin.Message.Core\YQTrack.Core.Backend.Admin.Message.Core.csproj" />
+    <ProjectReference Include="..\..\User\YQTrack.Core.Backend.Admin.User.Data\YQTrack.Core.Backend.Admin.User.Data.csproj" />
+    <ProjectReference Include="..\..\User\YQTrack.Core.Backend.Admin.User.Service\YQTrack.Core.Backend.Admin.User.Service.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.TrackApi.Data\YQTrack.Core.Backend.Admin.TrackApi.Data.csproj" />
+    <ProjectReference Include="..\YQTrack.Core.Backend.Admin.TrackApi.DTO\YQTrack.Core.Backend.Admin.TrackApi.DTO.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="YQTrack.Backend.Enums">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Enums.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.Models">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Backend.Sharding">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Backend.Sharding.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Service.Standard.User">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Service.Standard.User.dll</HintPath>
+    </Reference>
+    <Reference Include="YQTrack.Utility">
+      <HintPath>..\..\..\..\..\YQTrack.Backend.Release\_Standard\YQTrack.Utility.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,61 @@
+﻿@model IframeTransferData<ESDashboardDetailResponse>
+@{
+    Layout = "_Layout";
+}
+@section head
+{
+    <style type="text/css">
+        iframe {
+            position: absolute;
+            height: 99%;
+            width: 99%;
+            border: none;
+        }
+
+        #fields, .fieldItem {
+            display: inline-block;
+        }
+
+        .layui-form-mid {
+            float: none;
+            display: inline-block;
+            margin-left: 10px;
+        }
+    </style>
+}
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <div id="fields"></div>
+            <br />
+            <div class="fieldItem">
+                <div class="layui-form-mid">
+                    时间范围
+                </div>
+                <div class="layui-input-inline" style="width:150px;">
+                    <select id="time" lay-verify="required" name="time">
+                        <option value="">请选择时间范围</option>
+                        @foreach (var item in Model.Data.TimeRanges)
+                        {
+                            <option value="@item.Value">@item.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+<input type="hidden" id="dashboardSrc" value="@Model.Data.ESDashboard.DashboardSrc" />
+<input type="hidden" id="hiFields" value="@Model.Data.ESDashboard.FieldsConfig" />
+@*<input type="hidden" id="auth" value="@($"{Model.Data.ESDashboard.Username}:{Model.Data.ESDashboard.Password}")" />*@
+<iframe></iframe>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/business/eSDashboard/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/business/eSDashboard/index.min.js" asp-append-version="true"></script>
+    </environment>
+}
+

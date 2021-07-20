@@ -1,0 +1,42 @@
+﻿@model bool
+@{
+    ViewBag.Title = "登陆日志";
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote quoteBox">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            @{
+                if (Model)
+                {
+                    <div class="layui-input-inline">
+                        <input type="text" id="account" name="account" class="layui-input" placeholder="请输入管理员账号" />
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" id="nickName" name="nickName" class="layui-input" placeholder="请输入管理员昵称" />
+                    </div>
+                }
+            }
+            <div class="layui-input-inline">
+                <input type="text" id="platform" name="platform" class="layui-input" placeholder="请输入平台" />
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+<script type="text/html" id="toolbar">
+</script>
+@section Scripts{
+    <script type="text/javascript">
+        window.hasSuperRole = @(Model?"true":"false");
+    </script>
+    <environment include="Development">
+        <script src="~/js/admin/home/loginLog.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/admin/home/loginLog.min.js" asp-append-version="true"></script>
+    </environment>
+}

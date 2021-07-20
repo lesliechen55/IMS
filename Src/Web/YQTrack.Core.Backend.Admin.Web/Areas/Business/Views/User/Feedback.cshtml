@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "_Layout";
+}
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            <div class="layui-input-inline">
+                <input type="text" id="userId" name="userId" class="layui-input" placeholder="请输入用户ID" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="email" name="email" class="layui-input" placeholder="请输入用户邮箱" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="content" name="content" class="layui-input" placeholder="请输入反馈内容" />
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn" lay-event="reply"><i class="layui-icon">&#xe63a;</i> 回复</button>
+    </div>
+</script>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/business/user/feedback.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/business/user/feedback.min.js" asp-append-version="true"></script>
+    </environment>
+}

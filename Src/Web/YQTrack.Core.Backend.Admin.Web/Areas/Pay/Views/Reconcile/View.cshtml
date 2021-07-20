@@ -1,0 +1,54 @@
+﻿@model IframeTransferData<List<ReconcileItemShowResponse>>
+
+@{
+    Layout = "_Layout";
+}
+<table class="layui-table" lay-filter="item">
+    @*<colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>*@
+    <thead>
+        <tr>
+            <th lay-data="{field:'action'}">订单号</th>
+            <th lay-data="{field:'request'}">支付商</th>
+            <th lay-data="{field:'response'}">货币</th>
+            <th lay-data="{field:'userId'}">金额</th>
+            <th lay-data="{field:'clientIP'}">交易号</th>
+            <th lay-data="{field:'success'}">对账状态</th>
+            @*<th lay-data="{field:'createAt', width:160}">创建时间</th>
+                <th lay-data="{field:'createAt', width:160}">更新时间</th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in @Model.Data)
+        {
+            <tr>
+                @if (item.IsTestOrder)
+                {
+                    <td>@item.OrderId <span style="color: blue">测试</span></td>
+                }
+                else
+                {
+                    <td>@item.OrderId</td>
+                }
+                <td>@item.ProviderId</td>
+                <td>@item.ProviderCurrency</td>
+                <td>@item.ProviderAmount</td>
+                <td>@item.ProviderNo</td>
+                <td>@item.ReconcileState</td>
+                @*<td>@item.CreateAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td>@item.UpdateAt.ToString("yyyy-MM-dd HH:mm:ss")</td>*@
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/pay/reconcile/view.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pay/reconcile/view.min.js" asp-append-version="true"></script>
+    </environment>
+}

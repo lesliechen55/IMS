@@ -1,0 +1,38 @@
+﻿@model IframeTransferData
+@{
+    Layout = "_Layout";
+}
+<div class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">角色名</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" required lay-verify="required" placeholder="请输入角色名" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">开关</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="isActive" lay-filter="isActive" lay-skin="switch" lay-text="ON|OFF" checked value="true">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+            <textarea name="remark" required lay-verify="required" placeholder="请输入备注内容" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formAdd">立即提交</button>
+            <button class="layui-btn layui-btn-danger" id="close">关闭</button>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/admin/role/add.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/admin/role/add.min.js" asp-append-version="true"></script>
+    </environment>
+}

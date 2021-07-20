@@ -1,0 +1,42 @@
+﻿@model Dictionary<int, string>
+@{
+    Layout = "_Layout";
+}
+@section head
+{
+    <style type="text/css">
+        .layui-table-cell {
+            height: auto !important;
+        }
+    </style>
+}
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="email" name="email" placeholder="请输入用户邮箱" />
+            </div>
+            <div class="layui-input-inline">
+                <select id="status" name="status">
+                    <option value="">请选择审核状态</option>
+                    @foreach (var item in Model)
+                    {
+                        <option value="@item.Key">@item.Value</option>
+                    }
+                </select>
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/pay/offlinePayment/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pay/offlinePayment/index.min.js" asp-append-version="true"></script>
+    </environment>
+}

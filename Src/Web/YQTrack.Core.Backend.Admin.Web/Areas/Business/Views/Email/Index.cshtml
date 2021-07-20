@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "_Layout";
+}
+@section head
+{
+    <style type="text/css">
+        .layui-table-cell {
+            height: auto !important;
+            line-height: 20px;
+        }
+    </style>
+}
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <input type="hidden" id="page" name="page" value="1" />
+            <input type="hidden" id="limit" name="limit" value="10" />
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="submitDateRange" name="submitDateRange" placeholder="开始日期 - 结束日期">
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" autocomplete="on" id="to" name="to" class="layui-input" placeholder="请输入收件人邮箱" />
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" autocomplete="on" id="from" name="from" class="layui-input" placeholder="请输入发件人邮箱" />
+            </div>
+            <a class="layui-btn" id="search">搜索</a>
+        </div>
+    </form>
+</blockquote>
+<table id="table" class="layui-table" lay-filter="table"></table>
+<script type="text/html" id="toolbar">
+</script>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/business/email/index.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/business/email/index.min.js" asp-append-version="true"></script>
+    </environment>
+}

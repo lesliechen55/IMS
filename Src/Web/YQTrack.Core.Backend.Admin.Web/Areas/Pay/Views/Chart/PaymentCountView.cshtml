@@ -1,0 +1,113 @@
+﻿@using YQTrack.Core.Backend.Admin.Core
+@using YQTrack.Core.Backend.Enums.Pay
+@using YQTrack.Backend.Enums
+@using YQTrack.Backend.Payment.Model.Enums
+@{
+    Layout = "_Layout";
+}
+@section head
+{
+    <environment include="Development">
+        <link rel="stylesheet" href="~/module/formSelects-v4/formSelects-v4.css" asp-append-version="true" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/module/formSelects-v4/formSelects-v4.css" asp-append-version="true" />
+    </environment>
+}
+
+<blockquote class="layui-elem-quote">
+    <form class="layui-form">
+        <div class="layui-input-inline">
+            <select id="paymentAnalysisType" name="paymentAnalysisType">
+                <option value="">请选择分析类型</option>
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<PaymentAnalysisType>())
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <select id="chartDateType" name="chartDateType">
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<ChartDateType>())
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <input type="text" id="email" name="email" class="layui-input" placeholder="请输入用户Email" />
+        </div>
+        <div class="layui-input-inline" style="width:18%">
+            <select id="paymentProviderSel" name="paymentProviderSel" xm-select="paymentProviderSel" xm-select-height="36px" multiple>
+                <option value="">请选择支付渠道</option>
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<PaymentProvider>().Where(w => w.Key != (int)PaymentProvider.Escrow && w.Key != (int)PaymentProvider.Wechatpay))
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+        <div class="layui-input-inline" style="width:18%">
+            <select id="serviceTypeSel" name="serviceTypeSel" xm-select="serviceTypeSel" xm-select-height="36px" multiple>
+                <option value="">请选择业务类型</option>
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<ServiceType>())
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <select id="currencyTypeSel" name="currencyTypeSel">
+                <option value="">请选择币种</option>
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<CurrencyType>().OrderByDescending(o => o.Key))
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div><br />
+        <div class="layui-input-inline" style="width:18%">
+            <select id="platformTypeSel" name="platformTypeSel" xm-select="platformTypeSel" xm-select-height="36px" multiple>
+                <option value="">请选择平台类型</option>
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<UserPlatformType>(true))
+                {
+                    <option value="@key">@value</option>
+                }
+            </select>
+        </div>
+        <div class="layui-input-inline" style="width:18%">
+            <select id="paymentStatusSel" name="paymentStatusSel" xm-select="paymentStatusSel" xm-select-height="36px" multiple>
+                <option value="">请选择交易状态</option>
+                @foreach (var (key, value) in EnumHelper.GetSelectItem<PaymentStatus>(true))
+                {
+                    if (key == (int)PaymentStatus.Success)
+                    {
+                        <option value="@key" selected>@value</option>
+                    }
+                    else
+                    {
+                        <option value="@key">@value</option>
+                    }
+                }
+            </select>
+        </div>
+        <a class="layui-btn" id="search">查看图表</a>
+    </form>
+</blockquote>
+
+<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<hr class="layui-bg-cyan">
+<div id="paymentChart" style="width: 100%;height:600px;"></div>
+
+@section Scripts{
+    <environment include="Development">
+        <script type="text/javascript" src="~/echarts/echarts.js" asp-append-version="true"></script>
+        <script src="~/echarts/shine.js" asp-append-version="true"></script>
+        <script src="~/module/formSelects-v4/formSelects-v4.js" asp-append-version="true"></script>
+        <script src="~/js/pay/chart/paymentCountView.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script type="text/javascript" src="~/echarts/echarts.min.js" asp-append-version="true"></script>
+        <script src="~/echarts/shine.min.js" asp-append-version="true"></script>
+        <script src="~/module/formSelects-v4/formSelects-v4.min.js" asp-append-version="true"></script>
+        <script src="~/js/pay/chart/paymentCountView.min.js" asp-append-version="true"></script>
+    </environment>
+}
